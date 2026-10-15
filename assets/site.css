@@ -1,0 +1,684 @@
+/*
+ * The Kairos website. Colors come from brand/tokens/kairos.css, copied as given into
+ * assets/brand/kairos.css and loaded before this file. The semantic names below mirror
+ * packages/ui/src/theme.css: Bone and Ink in light, Midnight and Bone in dark, Iris for the
+ * brand and the primary action. 1px borders, no shadows, glows, glass or blur. The fonts are
+ * the files the app bundles, served from this site.
+ */
+
+@font-face {
+  font-family: "Instrument Serif";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/InstrumentSerif-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Inter Tight";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("fonts/InterTight-Variable.ttf") format("truetype");
+}
+
+:root {
+  color-scheme: light;
+  --canvas: var(--kairos-bone);
+  --surface: color-mix(in srgb, var(--kairos-bone) 35%, #ffffff);
+  --text: var(--kairos-ink);
+  --muted: color-mix(in srgb, var(--kairos-ink) 64%, transparent);
+  --accent: var(--kairos-iris);
+  --accent-fill: var(--kairos-iris);
+  --accent-fill-hover: color-mix(in srgb, var(--kairos-iris) 88%, var(--kairos-ink));
+  --on-accent: #ffffff;
+  --border: color-mix(in srgb, var(--kairos-ink) 14%, transparent);
+  --border-strong: color-mix(in srgb, var(--kairos-ink) 28%, transparent);
+  --hover: color-mix(in srgb, var(--kairos-ink) 6%, transparent);
+  --focus: var(--kairos-iris);
+  --radius-sm: 6px;
+  --radius: 10px;
+  --radius-lg: 14px;
+  --gutter: 24px;
+  --fast: 100ms;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --canvas: var(--kairos-midnight);
+    --surface: color-mix(in srgb, var(--kairos-ink) 70%, var(--kairos-midnight));
+    --text: var(--kairos-bone);
+    --muted: color-mix(in srgb, var(--kairos-bone) 64%, transparent);
+    --accent: var(--kairos-iris-light);
+    --border: color-mix(in srgb, var(--kairos-bone) 14%, transparent);
+    --border-strong: color-mix(in srgb, var(--kairos-bone) 28%, transparent);
+    --hover: color-mix(in srgb, var(--kairos-bone) 7%, transparent);
+    --focus: var(--kairos-iris-light);
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --gutter: 16px;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: var(--canvas);
+  color: var(--text);
+  font-family: var(--kairos-font-text);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: var(--canvas);
+  color: var(--text);
+  overflow-wrap: break-word;
+}
+
+img,
+picture {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: color var(--fast) ease-out;
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+.skip {
+  position: absolute;
+  left: var(--gutter);
+  top: -48px;
+  padding: 8px 12px;
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  z-index: 10;
+}
+
+.skip:focus {
+  top: 12px;
+}
+
+.wrap {
+  width: 100%;
+  max-width: 1120px;
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* Header and footer */
+
+.site-header {
+  border-bottom: 1px solid var(--border);
+}
+
+.site-header .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 64px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  flex: none;
+  border-radius: var(--radius-sm);
+}
+
+.brand img {
+  height: 28px;
+  width: auto;
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.site-nav a:not(.button) {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 15px;
+}
+
+.site-nav a:not(.button):hover,
+.site-nav a[aria-current="page"] {
+  color: var(--text);
+}
+
+@media (max-width: 520px) {
+  .site-nav .nav-text {
+    display: none;
+  }
+}
+
+.site-footer {
+  border-top: 1px solid var(--border);
+  margin-top: 96px;
+  padding-block: 40px 48px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.site-footer .wrap {
+  display: grid;
+  gap: 24px;
+}
+
+.site-footer img {
+  height: 24px;
+  width: auto;
+}
+
+.footer-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.footer-nav a {
+  color: var(--text);
+  text-decoration: none;
+}
+
+.footer-nav a:hover {
+  text-decoration: underline;
+}
+
+.site-footer p {
+  margin: 0;
+  max-width: 64ch;
+}
+
+/* Buttons */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 10px 20px;
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  background-color: var(--accent-fill);
+  color: var(--on-accent);
+  font: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.2;
+  text-decoration: none;
+  transition:
+    background-color var(--fast) ease-out,
+    color var(--fast) ease-out;
+}
+
+.button:hover {
+  background-color: var(--accent-fill-hover);
+  text-decoration: none;
+}
+
+.button.small {
+  min-height: 36px;
+  padding: 6px 14px;
+  font-size: 15px;
+}
+
+.button.quiet {
+  background-color: transparent;
+  border-color: var(--border-strong);
+  color: var(--text);
+}
+
+.button.quiet:hover {
+  background-color: var(--hover);
+}
+
+.button svg {
+  flex: none;
+}
+
+/* Type */
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-weight: 400;
+}
+
+.display {
+  font-family: var(--kairos-font-display);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.05;
+}
+
+.eyebrow {
+  margin: 0 0 16px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.lede {
+  margin: 24px 0 0;
+  max-width: 36em;
+  color: var(--muted);
+  font-size: 20px;
+  line-height: 1.5;
+}
+
+.note {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.numeric {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Home: hero */
+
+.hero {
+  padding-block: 80px 40px;
+}
+
+.hero h1 {
+  max-width: 15ch;
+  font-size: clamp(40px, 3vw + 28px, 64px);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 16px;
+  margin-top: 32px;
+}
+
+.hero .note {
+  margin: 20px 0 0;
+  max-width: 60ch;
+}
+
+.shot {
+  margin: 0;
+}
+
+.shot .frame {
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background-color: var(--surface);
+}
+
+.shot img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 10;
+}
+
+.shot figcaption {
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* Home: sections */
+
+.section {
+  padding-top: 96px;
+}
+
+.section-head {
+  max-width: 40em;
+  margin-bottom: 48px;
+}
+
+.section-head h2 {
+  font-size: clamp(32px, 2vw + 24px, 44px);
+}
+
+.section-head p {
+  margin: 16px 0 0;
+  color: var(--muted);
+  font-size: 18px;
+}
+
+.feature {
+  display: grid;
+  gap: 28px;
+  align-items: center;
+  padding-block: 32px;
+}
+
+.feature + .feature {
+  border-top: 1px solid var(--border);
+}
+
+.feature h3 {
+  font-size: clamp(28px, 1vw + 24px, 34px);
+}
+
+.feature p {
+  margin: 16px 0 0;
+  color: var(--muted);
+  font-size: 17px;
+}
+
+@media (min-width: 880px) {
+  .feature {
+    grid-template-columns: 5fr 7fr;
+    gap: 56px;
+    padding-block: 48px;
+  }
+
+  .feature:nth-of-type(even) .feature-text {
+    order: 2;
+  }
+}
+
+.ticks {
+  margin: 20px 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 8px;
+}
+
+.ticks li {
+  position: relative;
+  padding-left: 22px;
+}
+
+.ticks li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 0.62em;
+  width: 7px;
+  height: 7px;
+  border: 1.5px solid var(--accent);
+  border-radius: 999px;
+}
+
+.grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 248px), 1fr));
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.card {
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background-color: var(--surface);
+}
+
+.card h3 {
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.card .maker {
+  margin: 2px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.card p {
+  margin: 12px 0 0;
+  font-size: 15px;
+}
+
+.grid.two {
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 380px), 1fr));
+}
+
+.grid.two .card h3 {
+  font-size: 18px;
+}
+
+.grid.two .card p {
+  color: var(--muted);
+  font-size: 16px;
+}
+
+.after-grid {
+  margin: 24px 0 0;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+/* Documents: privacy, terms and support */
+
+.doc {
+  max-width: 760px;
+  padding-top: 64px;
+}
+
+.doc h1 {
+  font-family: var(--kairos-font-display);
+  font-size: clamp(40px, 2vw + 32px, 52px);
+  letter-spacing: -0.01em;
+  line-height: 1.05;
+}
+
+.doc .updated {
+  margin: 16px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.doc .intro {
+  margin: 24px 0 0;
+  font-size: 19px;
+  line-height: 1.55;
+}
+
+.doc h2 {
+  margin-top: 56px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  scroll-margin-top: 24px;
+}
+
+.doc h3 {
+  margin-top: 32px;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.35;
+  scroll-margin-top: 24px;
+}
+
+.doc p,
+.doc li {
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+.doc p {
+  margin: 16px 0 0;
+}
+
+.doc ul,
+.doc ol {
+  margin: 16px 0 0;
+  padding-left: 22px;
+}
+
+.doc li + li {
+  margin-top: 8px;
+}
+
+.doc code {
+  font-family: ui-monospace, "Cascadia Mono", Consolas, monospace;
+  font-size: 0.9em;
+  padding: 1px 5px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  overflow-wrap: anywhere;
+}
+
+.toc {
+  margin-top: 32px;
+  padding: 20px 24px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background-color: var(--surface);
+}
+
+.toc p {
+  margin: 0;
+  font-weight: 600;
+}
+
+.doc .toc ol {
+  margin-top: 12px;
+  columns: 2 240px;
+  column-gap: 32px;
+}
+
+.doc .toc li {
+  margin: 0 0 6px;
+  break-inside: avoid;
+  font-size: 15px;
+}
+
+.summary {
+  margin-top: 32px;
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background-color: var(--surface);
+}
+
+.summary h2 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 18px;
+}
+
+.service {
+  margin-top: 16px;
+  padding: 20px 24px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background-color: var(--surface);
+}
+
+.doc .service h3 {
+  margin: 0;
+  font-size: 17px;
+}
+
+.service dl {
+  display: grid;
+  gap: 4px 20px;
+  margin: 12px 0 0;
+}
+
+.service dt {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.service dd {
+  margin: 0 0 8px;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+@media (min-width: 640px) {
+  .service dl {
+    grid-template-columns: 112px 1fr;
+  }
+
+  .service dt {
+    padding-top: 3px;
+  }
+
+  .service dd {
+    margin: 0;
+  }
+}
+
+.statement {
+  margin-top: 20px;
+  padding: 20px 24px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-lg);
+}
+
+.doc .statement p:first-child {
+  margin-top: 0;
+}
+
+/*
+ * Text the owner replaces before the site goes public: the name of the person or company that
+ * makes Kairos and the contact address. Marked so it cannot be missed.
+ */
+.owner-fill {
+  outline: 1px dashed var(--accent);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  a,
+  .button {
+    transition: none;
+  }
+}

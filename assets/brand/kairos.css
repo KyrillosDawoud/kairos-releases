@@ -1,0 +1,19 @@
+:root {
+  --kairos-midnight: #0D0C14;
+  --kairos-ink: #16151F;
+  --kairos-bone: #F6F3EE;
+  --kairos-iris: #5B4CF0;
+  --kairos-iris-light: #8C80FF;
+  --kairos-orb-hi: #FFC9A0;
+  --kairos-orb-mid: #FF7A62;
+  --kairos-orb-lo: #E5407F;
+  --kairos-coral: #FA6A62;
+  --kairos-calendar: #3B6FD4;
+  --kairos-notes: #D9A441;
+  --kairos-career: #C2456F;
+  --kairos-money: #2E9B76;
+  --kairos-stone: #7C7889;
+  --kairos-orb: radial-gradient(circle at 38% 32%, #FFC9A0, #FF7A62 50%, #E5407F);
+  --kairos-font-display: 'Instrument Serif', Georgia, serif;
+  --kairos-font-text: 'Inter Tight', system-ui, sans-serif;
+}

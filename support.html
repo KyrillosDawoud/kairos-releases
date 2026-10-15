@@ -1,0 +1,147 @@
+<!doctype html>
+<!--
+  OWNER: before the site goes public, replace YOUR NAME OR COMPANY and privacy@YOUR-DOMAIN on
+  this page. Every placeholder is listed in docs/owner/going-public.md, step 1.
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Support: Kairos</title>
+  <meta name="description" content="Install Kairos, disconnect a service, revoke Google access, delete your account and get in touch.">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#F6F3EE" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0D0C14" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="favicon.ico" sizes="16x16 32x32 48x48 64x64">
+  <link rel="icon" href="assets/brand/kairos-app-icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png">
+  <link rel="stylesheet" href="assets/brand/kairos.css">
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="index.html" aria-label="Kairos home">
+        <picture>
+          <source srcset="assets/brand/kairos-lockup-reversed.svg" media="(prefers-color-scheme: dark)">
+          <img src="assets/brand/kairos-lockup.svg" alt="Kairos" width="94" height="28">
+        </picture>
+      </a>
+      <nav class="site-nav" aria-label="Main">
+        <a class="nav-text" href="privacy.html">Privacy</a>
+        <a class="nav-text" href="support.html" aria-current="page">Support</a>
+        <a class="button small" href="https://github.com/KyrillosDawoud/kairos-releases/releases/latest">Download</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="wrap">
+    <article class="doc">
+      <h1>Support</h1>
+      <p class="intro">How to install Kairos, disconnect each service, delete your account and reach us.</p>
+
+      <nav class="toc" aria-labelledby="toc-title">
+        <p id="toc-title">On this page</p>
+        <ol>
+          <li><a href="#install">Install Kairos</a></li>
+          <li><a href="#disconnect">Disconnect a service</a></li>
+          <li><a href="#google">Revoke Google access</a></li>
+          <li><a href="#claude">Turn off Claude</a></li>
+          <li><a href="#learning">Forget what Kairos learned</a></li>
+          <li><a href="#sign-out">Sign out</a></li>
+          <li><a href="#delete">Delete your account</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ol>
+      </nav>
+
+      <h2 id="install">Install Kairos</h2>
+      <ol>
+        <li>Open the <a href="https://github.com/KyrillosDawoud/kairos-releases/releases/latest">latest release</a> and download the file that ends in <code>x64-setup.exe</code>.</li>
+        <li>Open it. If Windows says "Windows protected your PC", choose More info, then Run anyway. Windows shows this because the installer is not code signed yet.</li>
+        <li>Kairos installs for your Windows account only and needs no administrator rights. It runs on Windows 10 and 11, 64-bit.</li>
+      </ol>
+      <p>A versioned release checks for updates and installs signed updates on its own. Settings, About shows your version and has Check for updates.</p>
+
+      <h2 id="disconnect">Disconnect a service</h2>
+      <p>Each service has a sheet in Connections with one way to disconnect. Disconnecting removes Kairos's access from your computer. Some services also keep an approval on their side, which you can remove there.</p>
+
+      <h3 id="google-calendar">Google Calendar</h3>
+      <p>Connections, Google Calendar, Disconnect. Kairos deletes the token from Windows Credential Manager and revokes its access at Google. To check, see <a href="#google">Revoke Google access</a>.</p>
+
+      <h3 id="outlook">Outlook and Microsoft 365</h3>
+      <p>Connections, Outlook, Disconnect. Kairos deletes the token from your computer. Then remove the approval at Microsoft:</p>
+      <ul>
+        <li>A personal Microsoft account: open <a href="https://account.live.com/consent/Manage">account.live.com/consent/Manage</a>, choose Kairos, then remove its permissions.</li>
+        <li>A work or school account: ask your IT team to remove Kairos. Your organization manages these approvals.</li>
+      </ul>
+
+      <h3 id="canvas">Canvas</h3>
+      <p>Connections, Canvas, Disconnect. Kairos deletes your school's session or access token from your computer. If you used an access token, also delete it in Canvas: Account, Settings, Approved Integrations.</p>
+
+      <h3 id="plaid">Banks through Plaid</h3>
+      <p>Connections, Banks through Plaid, then Remove next to the bank. Kairos ends the link at Plaid and deletes it from Kairos's server. You can also see and remove every app connected through Plaid at <a href="https://my.plaid.com">my.plaid.com</a>.</p>
+
+      <h3 id="simplefin">Banks through SimpleFIN</h3>
+      <p>Connections, Banks through SimpleFIN, Disconnect. Kairos deletes the access address from your computer. Then remove Kairos in your account at <a href="https://bridge.simplefin.org">SimpleFIN Bridge</a>.</p>
+
+      <h3 id="feeds">Calendar feeds</h3>
+      <p>Open Calendar and remove the linked calendar from the calendar's sidebar. Kairos deletes the address and its copy of the calendar.</p>
+
+      <h2 id="google">Revoke Google access</h2>
+      <p>Disconnecting Google Calendar in Kairos revokes access for you. To check or do it yourself, at any time and from any device:</p>
+      <ol>
+        <li>Open <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a> and sign in to the Google account you connected.</li>
+        <li>Choose Kairos in the list of third-party apps.</li>
+        <li>Remove Kairos's access.</li>
+      </ol>
+      <p>Kairos then says Google Calendar needs you to connect again, and stops reading it. If you signed in to Kairos with Google, that sign-in appears on the same page. Removing it there does not delete your Kairos account. See <a href="#delete">Delete your account</a> for that.</p>
+
+      <h2 id="claude">Turn off Claude</h2>
+      <p>Settings, Claude, Remove key. Kairos deletes the key from your computer and stops sending anything to Anthropic. To stop the key working everywhere, delete it in your Anthropic Console as well.</p>
+      <p>Looking at your screen is never on by default. Kairos takes a picture only when you turn on Look at my screen or press Ctrl Alt S, for that one question.</p>
+
+      <h2 id="learning">Forget what Kairos learned</h2>
+      <p>Settings, What Kairos has learned lists every item and memory with its evidence. Remove deletes one item. Forget everything clears all of it. The switch turns learning off. All of it lives on your computer only.</p>
+
+      <h2 id="sign-out">Sign out</h2>
+      <p>Settings, Account, Sign out. Kairos ends the session on this computer and removes its cached copy of your Kairos data. Your connections stay on the computer until you disconnect them.</p>
+
+      <h2 id="delete">Delete your account</h2>
+      <ol>
+        <li>In Kairos, disconnect each service in Connections, as above. This removes access from your computer and, for Google and Plaid, at the service.</li>
+        <li>Write to <a class="owner-fill" href="mailto:privacy@YOUR-DOMAIN?subject=Delete%20my%20Kairos%20account">privacy@YOUR-DOMAIN</a> from the email address on your Kairos account, with the subject "Delete my Kairos account".</li>
+        <li>Within 30 days we end every bank link at Plaid and delete your account with everything Kairos's server holds for it. We write back when it is done.</li>
+      </ol>
+      <p>To clear your computer as well:</p>
+      <ol>
+        <li>Windows Settings, Apps, Installed apps, Kairos, Uninstall. If the uninstaller offers to delete the app's data, choose it.</li>
+        <li>Open Credential Manager from the Start menu, then Windows Credentials. Remove any entry that names <code>app.kairos.desktop</code>.</li>
+      </ol>
+      <p>Anthropic keeps requests made with your key under its own policy. See <a href="privacy.html#claude">Claude and Anthropic</a>.</p>
+
+      <h2 id="contact">Contact</h2>
+      <p>Write to <a class="owner-fill" href="mailto:privacy@YOUR-DOMAIN">privacy@YOUR-DOMAIN</a>. Include your Kairos version from Settings, About and what you saw on screen. Never send a password, a token, a setup token or an API key. We will never ask for one.</p>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <picture>
+        <source srcset="assets/brand/kairos-lockup-reversed.svg" media="(prefers-color-scheme: dark)">
+        <img src="assets/brand/kairos-lockup.svg" alt="Kairos" width="81" height="24">
+      </picture>
+      <ul class="footer-nav">
+        <li><a href="https://github.com/KyrillosDawoud/kairos-releases/releases/latest">Download</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+        <li><a href="terms.html">Terms</a></li>
+        <li><a href="support.html" aria-current="page">Support</a></li>
+        <li><a href="https://github.com/KyrillosDawoud/kairos-releases/releases">All releases</a></li>
+      </ul>
+      <p>Kairos is made by <span class="owner-fill">YOUR NAME OR COMPANY</span>. It is not affiliated with or endorsed by Google, Microsoft, Instructure, Plaid, SimpleFIN or Anthropic.</p>
+      <p>&copy; 2026 <span class="owner-fill">YOUR NAME OR COMPANY</span></p>
+    </div>
+  </footer>
+</body>
+</html>

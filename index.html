@@ -1,0 +1,251 @@
+<!doctype html>
+<!--
+  OWNER: before the site goes public, replace YOUR NAME OR COMPANY on this page.
+  Every placeholder is listed in docs/owner/going-public.md, step 1.
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kairos: everything in one place</title>
+  <meta name="description" content="Kairos brings your calendars, classes, money and tasks into one Windows app, and it always knows what needs you now.">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#F6F3EE" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0D0C14" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="favicon.ico" sizes="16x16 32x32 48x48 64x64">
+  <link rel="icon" href="assets/brand/kairos-app-icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png">
+  <link rel="stylesheet" href="assets/brand/kairos.css">
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="index.html" aria-label="Kairos home">
+        <picture>
+          <source srcset="assets/brand/kairos-lockup-reversed.svg" media="(prefers-color-scheme: dark)">
+          <img src="assets/brand/kairos-lockup.svg" alt="Kairos" width="94" height="28">
+        </picture>
+      </a>
+      <nav class="site-nav" aria-label="Main">
+        <a class="nav-text" href="privacy.html">Privacy</a>
+        <a class="nav-text" href="support.html">Support</a>
+        <a class="button small" href="https://github.com/KyrillosDawoud/kairos-releases/releases/latest">Download</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero wrap" aria-labelledby="promise">
+      <p class="eyebrow">For Windows 10 and 11</p>
+      <h1 id="promise" class="display">Everything in one place, and it always knows what needs you now.</h1>
+      <p class="lede">Kairos brings your calendars, classes, money and tasks into one desktop app. Today shows up to 3 things that need you now, each with one action.</p>
+      <div class="actions">
+        <a class="button" href="https://github.com/KyrillosDawoud/kairos-releases/releases/latest">
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 3v10M5.5 8.5 10 13l4.5-4.5M4 16.5h12"/></svg>
+          Download for Windows
+        </a>
+        <a class="button quiet" href="#your-data">How Kairos handles your data</a>
+      </div>
+      <p class="note">Free. Windows 10 and 11, 64-bit. It installs for your account only and needs no administrator rights. The installer is not code signed yet, so Windows may say it protected your PC: choose More info, then Run anyway. <a href="support.html#install">Installing Kairos</a></p>
+    </section>
+
+    <div class="wrap">
+      <figure class="shot">
+        <div class="frame">
+          <picture>
+            <source srcset="assets/screens/today-dark.webp" media="(prefers-color-scheme: dark)">
+            <img src="assets/screens/today-light.webp" width="1440" height="900" alt="Kairos Today with three things that need you, the tasks grouped by due date and the events for today and tomorrow.">
+          </picture>
+        </div>
+        <figcaption>Today in Kairos. Every screen on this page shows demo data.</figcaption>
+      </figure>
+    </div>
+
+    <section class="section wrap" aria-labelledby="what">
+      <div class="section-head">
+        <h2 id="what" class="display">What Kairos does</h2>
+        <p>One window for the day ahead. Kairos reads the places your life already lives and shows what is next.</p>
+      </div>
+
+      <article class="feature">
+        <div class="feature-text">
+          <p class="eyebrow">Calendar</p>
+          <h3 class="display">Every calendar in one view.</h3>
+          <p>Day, week, month and agenda. Google Calendar, Outlook and any iCal link sit beside your own events, read only. Type "study Thursday 7 to 9" and Kairos puts it at the right time.</p>
+          <ul class="ticks">
+            <li>Drag to move, drag the edge to resize</li>
+            <li>A reminder before each event, 10 minutes by default</li>
+            <li>D, W, M and A switch the view</li>
+          </ul>
+        </div>
+        <figure class="shot">
+          <div class="frame">
+            <picture>
+              <source srcset="assets/screens/calendar-dark.webp" media="(prefers-color-scheme: dark)">
+              <img src="assets/screens/calendar-light.webp" width="1200" height="750" loading="lazy" alt="The Kairos week view with classes, an interview and study blocks, a small month and the list of calendars.">
+            </picture>
+          </div>
+        </figure>
+      </article>
+
+      <article class="feature">
+        <div class="feature-text">
+          <p class="eyebrow">Money</p>
+          <h3 class="display">Your money, read only.</h3>
+          <p>Connect banks and cards through Plaid or SimpleFIN Bridge. Kairos shows net worth, spending against last month by the same day, bills coming up and charges worth a look. Every category says why it is there.</p>
+          <ul class="ticks">
+            <li>One correction moves every charge from that merchant</li>
+            <li>Totals are computed in exact cents</li>
+            <li>Kairos never moves money or makes a payment</li>
+          </ul>
+        </div>
+        <figure class="shot">
+          <div class="frame">
+            <picture>
+              <source srcset="assets/screens/money-dark.webp" media="(prefers-color-scheme: dark)">
+              <img src="assets/screens/money-light.webp" width="1200" height="750" loading="lazy" alt="Kairos Money: net worth, spending this month against last month on a line chart, a charge worth a look, bills coming up and accounts.">
+            </picture>
+          </div>
+        </figure>
+      </article>
+
+      <article class="feature">
+        <div class="feature-text">
+          <p class="eyebrow">Ask Kairos</p>
+          <h3 class="display">Ask in plain words.</h3>
+          <p>Ctrl K searches your events, tasks and notes, or makes a new one from one line. Add your own Anthropic API key and Claude answers from your calendar and tasks, then proposes changes. Nothing changes until you apply them.</p>
+          <ul class="ticks">
+            <li>Ctrl Alt K opens it from any app</li>
+            <li>Speak instead of typing, through Windows speech recognition</li>
+            <li>Claude reads money only when you ask about money</li>
+          </ul>
+        </div>
+        <figure class="shot">
+          <div class="frame">
+            <picture>
+              <source srcset="assets/screens/ask-dark.webp" media="(prefers-color-scheme: dark)">
+              <img src="assets/screens/ask-light.webp" width="1200" height="750" loading="lazy" alt="Ask Kairos over Today, with the line 'study for macro Thursday 7 to 9' and the row Create event: Study for macro, Thu Oct 15, 7:00 to 9:00 PM.">
+            </picture>
+          </div>
+        </figure>
+      </article>
+
+      <article class="feature">
+        <div class="feature-text">
+          <p class="eyebrow">Connections</p>
+          <h3 class="display">Each connection asks first.</h3>
+          <p>Every service has a page that says what Kairos can do with it and what it never does, before you connect. Disconnect any time and Kairos removes the access from your computer.</p>
+          <ul class="ticks">
+            <li>Sign in at Google, Microsoft or your school, never in a Kairos form</li>
+            <li>Access stays in Windows Credential Manager</li>
+            <li>Read only, every one</li>
+          </ul>
+        </div>
+        <figure class="shot">
+          <div class="frame">
+            <picture>
+              <source srcset="assets/screens/connections-dark.webp" media="(prefers-color-scheme: dark)">
+              <img src="assets/screens/connections-light.webp" width="1200" height="750" loading="lazy" alt="Kairos Connections with the Banks and cards sheet open, listing what Kairos can do and what it never does.">
+            </picture>
+          </div>
+        </figure>
+      </article>
+    </section>
+
+    <section class="section wrap" aria-labelledby="connects">
+      <div class="section-head">
+        <h2 id="connects" class="display">What Kairos connects to</h2>
+        <p>Each one is optional. Kairos works with none of them.</p>
+      </div>
+      <ul class="grid">
+        <li class="card">
+          <h3>Google Calendar</h3>
+          <p class="maker">Google</p>
+          <p>The calendars you show in Google Calendar, read only.</p>
+        </li>
+        <li class="card">
+          <h3>Outlook</h3>
+          <p class="maker">Microsoft</p>
+          <p>Your Outlook and Microsoft 365 calendar, read only.</p>
+        </li>
+        <li class="card">
+          <h3>Canvas</h3>
+          <p class="maker">Instructure</p>
+          <p>Courses, assignments, grades and files from your school's Canvas.</p>
+        </li>
+        <li class="card">
+          <h3>Banks through Plaid</h3>
+          <p class="maker">Plaid</p>
+          <p>Accounts and transactions from your banks and cards, read only.</p>
+        </li>
+        <li class="card">
+          <h3>Banks through SimpleFIN</h3>
+          <p class="maker">SimpleFIN Bridge</p>
+          <p>The same, through a SimpleFIN Bridge account you pay for yourself.</p>
+        </li>
+        <li class="card">
+          <h3>Calendar feed</h3>
+          <p class="maker">Any iCal link</p>
+          <p>Any other calendar that publishes an iCal address.</p>
+        </li>
+        <li class="card">
+          <h3>Claude</h3>
+          <p class="maker">Anthropic</p>
+          <p>Answers and plans in Ask Kairos, with your own API key.</p>
+        </li>
+      </ul>
+      <p class="after-grid">Planned: Gmail, Google Drive, Notion and investment holdings.</p>
+    </section>
+
+    <section class="section wrap" id="your-data" aria-labelledby="data-title">
+      <div class="section-head">
+        <h2 id="data-title" class="display">Your data</h2>
+        <p>Kairos keeps as little as it can, as close to you as it can.</p>
+      </div>
+      <ul class="grid two">
+        <li class="card">
+          <h3>Sign-ins stay on your computer.</h3>
+          <p>Access to Google, Outlook, Canvas and SimpleFIN Bridge is kept in Windows Credential Manager on your PC. Kairos's server never holds it.</p>
+        </li>
+        <li class="card">
+          <h3>The server keeps what you make.</h3>
+          <p>Your account, tasks, events and notes sync through Kairos's server, readable only by your account. So does the link to each bank you connect through Plaid.</p>
+        </li>
+        <li class="card">
+          <h3>Claude reads only when you ask.</h3>
+          <p>Your data goes to Anthropic only when you ask Claude something, with your own key. A picture of your screen goes only when you ask about the screen.</p>
+        </li>
+        <li class="card">
+          <h3>Nothing sold. No ads.</h3>
+          <p>Kairos does not sell your data, show ads or use your data to train AI models. The app and this site have no analytics or trackers.</p>
+        </li>
+      </ul>
+      <div class="actions">
+        <a class="button quiet" href="privacy.html">Read the privacy policy</a>
+        <a href="support.html#delete">Disconnect a service or delete your account</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <picture>
+        <source srcset="assets/brand/kairos-lockup-reversed.svg" media="(prefers-color-scheme: dark)">
+        <img src="assets/brand/kairos-lockup.svg" alt="Kairos" width="81" height="24">
+      </picture>
+      <ul class="footer-nav">
+        <li><a href="https://github.com/KyrillosDawoud/kairos-releases/releases/latest">Download</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+        <li><a href="terms.html">Terms</a></li>
+        <li><a href="support.html">Support</a></li>
+        <li><a href="https://github.com/KyrillosDawoud/kairos-releases/releases">All releases</a></li>
+      </ul>
+      <p>Kairos is made by <span class="owner-fill">YOUR NAME OR COMPANY</span>. It is not affiliated with or endorsed by Google, Microsoft, Instructure, Plaid, SimpleFIN or Anthropic.</p>
+      <p>&copy; 2026 <span class="owner-fill">YOUR NAME OR COMPANY</span></p>
+    </div>
+  </footer>
+</body>
+</html>
