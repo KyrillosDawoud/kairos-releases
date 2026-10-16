@@ -43,7 +43,7 @@
   <main id="main" class="wrap">
     <article class="doc">
       <h1>Privacy policy</h1>
-      <p class="updated">Last updated October 15, 2026</p>
+      <p class="updated">Last updated October 16, 2026</p>
       <p class="intro">Kairos is a desktop app for Windows that brings your calendars, classes, money and tasks into one place. This policy says what Kairos reads, where it keeps it, who else sees it and how to delete it. It covers the Kairos app, Kairos's server and this website.</p>
 
       <section class="summary" aria-labelledby="short">
@@ -128,15 +128,17 @@
       <p>Reminders and the morning brief are made on your computer from these caches. They use Windows notifications, not a push service.</p>
 
       <h2 id="connections">What each connection reads</h2>
-      <p>Every connection is optional, read only and turned on by you. Kairos uses what it reads only to show it to you in Kairos and, when you ask, to answer with Claude.</p>
+      <p>Every connection is optional and turned on by you. All of them are read only except Google Calendar, where Kairos can create, change and delete events on calendars you can edit, when you ask it to. Kairos uses what it reads only to show it to you in Kairos and, when you ask, to answer with Claude.</p>
 
       <section class="service" aria-labelledby="c-google">
         <h3 id="c-google">Google Calendar</h3>
         <dl>
           <dt>Reads</dt>
           <dd>The list of calendars you can see and their events: title, time, location, description and video call link. Your email address, to show which account is connected.</dd>
+          <dt>Changes</dt>
+          <dd>When you ask, Kairos creates, changes or deletes an event in Google Calendar: when you save an event, drag or resize it, delete it, add one with quick add, or apply a change Kairos proposed. Only on calendars you own or can edit, and only the event you changed. Kairos never changes a calendar you can only view and never emails your guests about a change.</dd>
           <dt>Access</dt>
-          <dd><code>openid</code>, <code>email</code>, <code>calendar.calendarlist.readonly</code> and <code>calendar.events.readonly</code>. Kairos cannot create, change or delete anything in Google Calendar.</dd>
+          <dd><code>openid</code>, <code>email</code>, <code>calendar.calendarlist.readonly</code> and <code>calendar.events</code>. The last one lets Kairos read events and create, change and delete them. It does not let Kairos change your calendars, their sharing or your settings.</dd>
           <dt>Kept</dt>
           <dd>The refresh token in Credential Manager. Events in the app's cache on your computer.</dd>
           <dt>Ends</dt>
@@ -269,7 +271,8 @@
       <p>In particular:</p>
       <ul>
         <li><strong>What Kairos reads.</strong> With Google Calendar: your calendar list and events, as listed above. With Sign in with Google: your email address, name and profile picture.</li>
-        <li><strong>How it is used.</strong> Only to show your calendars in the calendar, reminders, Today and Up next. When you ask Kairos a question, also to answer it. Your sign-in details identify your Kairos account.</li>
+        <li><strong>What Kairos changes.</strong> With Google Calendar: the events you create, change or delete in Kairos, on calendars you can edit, only when you ask. Nothing else.</li>
+        <li><strong>How it is used.</strong> Only to show your calendars in the calendar, reminders, Today and Up next, and to make the changes you ask for. When you ask Kairos a question, also to answer it. Your sign-in details identify your Kairos account.</li>
         <li><strong>Where it is kept.</strong> Calendar data stays on your computer, in the app's cache and in your conversations with Kairos, and is never stored on Kairos's server. Sign-in details are stored with your account on Kairos's server.</li>
         <li><strong>Who it goes to.</strong> Calendar data goes to Anthropic only when you ask Kairos a question, as part of that request, through Kairos AI or your own key. Kairos AI passes it through Kairos's server without saving it. It goes to no one else.</li>
         <li><strong>Never.</strong> Google user data is never sold, never used for advertising, never used to decide credit or lending, never given to data brokers and never used to create, train or improve any AI or machine learning model.</li>
