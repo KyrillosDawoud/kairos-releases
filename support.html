@@ -32,7 +32,7 @@
       <nav class="site-nav" aria-label="Main">
         <a class="nav-text" href="privacy.html">Privacy</a>
         <a class="nav-text" href="support.html" aria-current="page">Support</a>
-        <a class="button small" href="https://github.com/KyrillosDawoud/kairos-releases/releases/latest">Download</a>
+        <a class="button small" href="https://github.com/KyrillosDawoud7/kairos-releases/releases/latest">Download</a>
       </nav>
     </div>
   </header>
@@ -58,7 +58,7 @@
 
       <h2 id="install">Install Kairos</h2>
       <ol>
-        <li>Open the <a href="https://github.com/KyrillosDawoud/kairos-releases/releases/latest">latest release</a> and download the file that ends in <code>x64-setup.exe</code>.</li>
+        <li>Open the <a href="https://github.com/KyrillosDawoud7/kairos-releases/releases/latest">latest release</a> and download the file that ends in <code>x64-setup.exe</code>.</li>
         <li>Open it. If Windows says "Windows protected your PC", choose More info, then Run anyway. Windows shows this because the installer is not code signed yet.</li>
         <li>Kairos installs for your Windows account only and needs no administrator rights. It runs on Windows 10 and 11, 64-bit.</li>
       </ol>
@@ -69,9 +69,10 @@
 
       <h3 id="google-calendar">Google Calendar</h3>
       <p>Connections, Google Calendar, Disconnect. Kairos deletes the token from Windows Credential Manager and revokes its access at Google. To check, see <a href="#google">Revoke Google access</a>.</p>
+      <p>To stop one Google service and keep the rest, open Connections, Google and turn off Tasks, Drive or Classroom. Kairos stops reading it at once. Your tasks stay in Kairos and in Google Tasks.</p>
 
       <h3 id="outlook">Outlook and Microsoft 365</h3>
-      <p>Connections, Outlook, Disconnect. Kairos deletes the token from your computer. Then remove the approval at Microsoft:</p>
+      <p>To stop one service, such as Mail or Teams chat: Connections, Microsoft, turn its switch off. Kairos stops reading it at once. To end the whole connection: Connections, Microsoft, Disconnect. Kairos deletes the token from your computer. Then remove the approval at Microsoft:</p>
       <ul>
         <li>A personal Microsoft account: open <a href="https://account.live.com/consent/Manage">account.live.com/consent/Manage</a>, choose Kairos, then remove its permissions.</li>
         <li>A work or school account: ask your IT team to remove Kairos. Your organization manages these approvals.</li>
@@ -100,7 +101,7 @@
 
       <h2 id="claude">Turn off Claude</h2>
       <p>Settings, Claude, Remove key. Kairos deletes the key from your computer and stops sending anything to Anthropic. To stop the key working everywhere, delete it in your Anthropic Console as well.</p>
-      <p>Looking at your screen is never on by default. Kairos takes a picture only when you turn on Look at my screen or press Ctrl Alt S, for that one question.</p>
+      <p>Kairos takes a picture of your screen only with a question you ask: when you hold Ctrl Alt Space to ask the companion, turn on Look at my screen or press Ctrl Alt S. One picture goes with that one question and is never saved. Settings, Companion, Read my screen when I ask turns it off, and then Kairos takes no picture at all.</p>
 
       <h2 id="learning">Forget what Kairos learned</h2>
       <p>Settings, What Kairos has learned lists every item and memory with its evidence. Remove deletes one item. Forget everything clears all of it. The switch turns learning off. All of it lives on your computer only.</p>
@@ -130,11 +131,11 @@
         <img src="assets/brand/kairos-lockup.svg" alt="Kairos" width="81" height="24">
       </picture>
       <ul class="footer-nav">
-        <li><a href="https://github.com/KyrillosDawoud/kairos-releases/releases/latest">Download</a></li>
+        <li><a href="https://github.com/KyrillosDawoud7/kairos-releases/releases/latest">Download</a></li>
         <li><a href="privacy.html">Privacy</a></li>
         <li><a href="terms.html">Terms</a></li>
         <li><a href="support.html" aria-current="page">Support</a></li>
-        <li><a href="https://github.com/KyrillosDawoud/kairos-releases/releases">All releases</a></li>
+        <li><a href="https://github.com/KyrillosDawoud7/kairos-releases/releases">All releases</a></li>
       </ul>
       <p>Kairos is made by <span class="owner-fill">YOUR NAME OR COMPANY</span>. It is not affiliated with or endorsed by Google, Microsoft, Instructure, Plaid, SimpleFIN or Anthropic.</p>
       <p>&copy; 2026 Kyrillos Dawoud</p>

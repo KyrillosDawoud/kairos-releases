@@ -35,7 +35,7 @@
       <nav class="site-nav" aria-label="Main">
         <a class="nav-text" href="privacy.html" aria-current="page">Privacy</a>
         <a class="nav-text" href="support.html">Support</a>
-        <a class="button small" href="https://github.com/KyrillosDawoud/kairos-releases/releases/latest">Download</a>
+        <a class="button small" href="https://github.com/KyrillosDawoud7/kairos-releases/releases/latest">Download</a>
       </nav>
     </div>
   </header>
@@ -50,8 +50,9 @@
         <h2 id="short">The short version</h2>
         <ul>
           <li>Kairos reads only the services you connect, and reads them only to show them to you.</li>
-          <li>Access to Google, Outlook, Canvas and SimpleFIN Bridge stays on your computer, in Windows Credential Manager.</li>
-          <li>Kairos's server keeps your account, the tasks, events and notes you make in Kairos, what Kairos remembers about you and the links to banks you connect through Plaid.</li>
+          <li>Access to Google, Microsoft, Canvas and SimpleFIN Bridge stays on your computer, in Windows Credential Manager.</li>
+          <li>Kairos's server keeps your account, the tasks, events and notes you make in Kairos, tasks from Microsoft To Do if you turn it on, the applications and professional contacts you track, what Kairos remembers about you, the symbols on your Markets watchlist and the links to banks you connect through Plaid.</li>
+          <li>Your mail and Teams chats are read on your computer and never stored on Kairos's server. Kairos never sends mail or messages.</li>
           <li>Your data goes to Anthropic only when you ask Kairos something: through Kairos AI on Kairos's server, or through your own Anthropic API key if you add one.</li>
           <li>Your conversations with Kairos stay on your computer.</li>
           <li>We do not sell your data, show ads or use your data to train AI models.</li>
@@ -67,6 +68,7 @@
           <li><a href="#server">What Kairos's server stores</a></li>
           <li><a href="#computer">What stays on your computer</a></li>
           <li><a href="#connections">What each connection reads</a></li>
+          <li><a href="#extension">The Kairos extension</a></li>
           <li><a href="#claude">Claude and Anthropic</a></li>
           <li><a href="#google">Google user data</a></li>
           <li><a href="#never">What we never do</a></li>
@@ -98,11 +100,15 @@
       <ul>
         <li>Your account, as described above.</li>
         <li>What you make in Kairos: your tasks, the events you create in Kairos, your notes, your Kairos calendars and the links between them.</li>
+        <li><strong>Your applications and network</strong> in Professional: each application you track (the firm, its site, the role, the place, the stage and each stage it reached with its date, the deadline, the next step, pay, notes and the link to the posting), the people you add (the name, firm, title, team, school, email and LinkedIn link you type, how you met and when to follow up), the touches you log with them and who is on which application. You can edit or delete each one. Kairos never reads LinkedIn.</li>
         <li><strong>What Kairos remembers about you:</strong> short sentences you add in Settings, Memory, and the ones Kairos saves as you talk, such as a goal or a routine, so it knows you on every device. You can edit or forget each one.</li>
+        <li><strong>Your Markets watchlist:</strong> the ticker symbols you follow and their order, so the list is the same on every computer. Nothing else about a symbol, no amount and no account.</li>
         <li>For each bank you connect through Plaid: the item id Plaid gives it, the bank's name, the access token Plaid issues for it and the last error code Plaid reported. Only Kairos's server function can read the access token. The app never receives it.</li>
         <li>For each Kairos AI request, a usage record: which part of Kairos asked, the model, the number of tokens and the cost. Not the request and not the answer.</li>
+        <li><strong>Your career profile,</strong> if you fill one in Professional, Profile: the facts the Kairos extension fills applications from, your answers to common questions, the voluntary self identification answers you chose to save and your resume, a PDF in a private store only your account can read.</li>
       </ul>
-      <p>Each account's rows are protected by row level security, so only your signed-in account can read them. Events from Google Calendar, Outlook and calendar feeds, your Canvas data, your balances and transactions, your conversations with Kairos and your Anthropic key are not stored on the server. Balances and transactions from Plaid, and Kairos AI requests and answers, pass through the server and are not saved there.</p>
+      <p>Kairos's server also keeps a shared cache of public market data, such as a stock's price, a company's SEC filings and the Treasury's yields, so many people reading one symbol cost one request. It holds nothing about you or your account.</p>
+      <p>Each account's rows are protected by row level security, so only your signed-in account can read them. Events from Google Calendar, Outlook and calendar feeds, your mail, Teams chats and OneDrive files, your Canvas data, your balances and transactions, your conversations with Kairos and your Anthropic key are not stored on the server. Balances and transactions from Plaid, and Kairos AI requests and answers, pass through the server and are not saved there.</p>
       <p>Like any web service, Supabase keeps request logs, including IP addresses, for a short time to run and protect the service.</p>
 
       <h2 id="computer">What stays on your computer</h2>
@@ -111,7 +117,7 @@
       <p>Windows encrypts these for your Windows account:</p>
       <ul>
         <li>Your Kairos session.</li>
-        <li>The refresh tokens for Google Calendar and Outlook.</li>
+        <li>The refresh tokens for Google and Microsoft.</li>
         <li>Your Canvas sign-in session or access token.</li>
         <li>Your SimpleFIN Bridge access address.</li>
         <li>The addresses of calendar feeds you link.</li>
@@ -123,13 +129,14 @@
         <li><strong>What Kairos learns</strong> from how you use it: when you finish tasks, which tasks move to a later day, how long study blocks run, which suggestions you act on and which proposals from Claude you apply. Kairos keeps at most 3,000 of these signals, none older than 180 days. They are never sent to Kairos's server.</li>
         <li><strong>Your conversations with Kairos</strong>, the newest 50, with the files you attached, so you can reopen one where it ended. You can delete any of them, or all of them, on the Kairos screen.</li>
         <li>Money category corrections, your net worth history, the names, order and notes you give your accounts, which accounts you hid, class times and settings.</li>
-        <li><strong>Company icons</strong> on Money. Kairos asks each bank's and merchant's own website for its icon, the way a browser does, and keeps the answer for 30 days. That site learns only that a computer asked for its icon. No icon service is involved. Settings, Money, Show logos turns it off.</li>
+        <li><strong>Company icons</strong> on Money and Professional. Kairos asks each bank's, merchant's and firm's own website for its icon, the way a browser does, and keeps the answer for 30 days. That site learns only that a computer asked for its icon. No icon service is involved. Settings, Money, Show logos turns it off.</li>
+        <li><strong>Job postings you paste</strong> in Professional. Kairos reads the start of that page from the posting's own site to fill in the firm, the role, the place and the closing date, and keeps nothing of the page. It never reads LinkedIn.</li>
       </ul>
       <p>Signing out removes the cached copy of your Kairos data from the computer. Connections stay until you disconnect them. Settings, What Kairos has learned lets you remove any learned item, forget everything or turn learning off.</p>
       <p>Reminders and the morning brief are made on your computer from these caches. They use Windows notifications, not a push service.</p>
 
       <h2 id="connections">What each connection reads</h2>
-      <p>Every connection is optional and turned on by you. All of them are read only except Google Calendar, where Kairos can create, change and delete events on calendars you can edit, when you ask it to. Kairos uses what it reads only to show it to you in Kairos and, when you ask, to answer with Claude.</p>
+      <p>Every connection is optional and turned on by you. All of them are read only except Google Calendar, where Kairos can create, change and delete events on calendars you can edit, when you ask it to, and Google Tasks, which Kairos keeps in step with your Kairos tasks. Kairos uses what it reads only to show it to you in Kairos and, when you ask, to answer with Claude.</p>
 
       <section class="service" aria-labelledby="c-google">
         <h3 id="c-google">Google Calendar</h3>
@@ -147,17 +154,75 @@
         </dl>
       </section>
 
-      <section class="service" aria-labelledby="c-outlook">
-        <h3 id="c-outlook">Outlook and Microsoft 365</h3>
+      <section class="service" aria-labelledby="c-google-tasks">
+        <h3 id="c-google-tasks">Google Tasks</h3>
         <dl>
           <dt>Reads</dt>
-          <dd>Your calendar events: subject, time, location, the first lines of the body and the online meeting link. Your email address.</dd>
+          <dd>Your task lists and their tasks: title, notes, due date and whether each is done.</dd>
+          <dt>Changes</dt>
+          <dd>Every 15 minutes while Tasks is on, Kairos keeps Google Tasks and your Kairos tasks in step: a task you add, change, finish or delete in one appears the same way in the other. Tasks you make in Kairos go to My Tasks. Tasks from Canvas stay in Kairos.</dd>
           <dt>Access</dt>
-          <dd><code>openid</code>, <code>email</code>, <code>offline_access</code>, <code>User.Read</code> and <code>Calendars.Read</code>. Kairos cannot read your mail or change your calendar.</dd>
+          <dd><code>tasks</code>, asked for only when you turn Tasks on.</dd>
           <dt>Kept</dt>
-          <dd>The refresh token in Credential Manager. Events in the app's cache on your computer.</dd>
+          <dd>Each Google task becomes a Kairos task, stored with your account on Kairos's server like any task you make. Which Kairos task is which Google task is kept on your computer.</dd>
           <dt>Ends</dt>
-          <dd>Disconnect deletes the token. <a href="support.html#outlook">Remove the approval at Microsoft</a> as well.</dd>
+          <dd>Turn Tasks off to stop the sync. Your tasks stay in both places. Disconnect revokes Kairos's access at Google.</dd>
+        </dl>
+      </section>
+
+      <section class="service" aria-labelledby="c-google-drive">
+        <h3 id="c-google-drive">Google Drive</h3>
+        <dl>
+          <dt>Reads</dt>
+          <dd>Only the files you pick in Google's own picker: their names, types, dates and contents when you attach one or import a syllabus. Kairos cannot see any other file in your Drive.</dd>
+          <dt>Access</dt>
+          <dd><code>drive.file</code>, asked for only when you turn Drive on. Kairos never changes or deletes a file.</dd>
+          <dt>Kept</dt>
+          <dd>Nothing from Drive is stored on Kairos's server. A file you attach goes into that conversation.</dd>
+          <dt>Ends</dt>
+          <dd>Turn Drive off or disconnect Google.</dd>
+        </dl>
+      </section>
+
+      <section class="service" aria-labelledby="c-google-classroom">
+        <h3 id="c-google-classroom">Google Classroom</h3>
+        <dl>
+          <dt>Reads</dt>
+          <dd>Your active classes, their published work with your own submissions and grades, and announcements. Read only: Kairos never turns in work or posts.</dd>
+          <dt>Access</dt>
+          <dd><code>classroom.courses.readonly</code>, <code>classroom.coursework.me.readonly</code> and <code>classroom.announcements.readonly</code>, asked for only when you turn Classroom on.</dd>
+          <dt>Kept</dt>
+          <dd>In the app's cache on your computer, beside Canvas. Not stored on Kairos's server.</dd>
+          <dt>Ends</dt>
+          <dd>Turn Classroom off or disconnect Google.</dd>
+        </dl>
+      </section>
+
+      <section class="service" aria-labelledby="c-gmail">
+        <h3 id="c-gmail">Gmail</h3>
+        <p>Not offered yet. Reading mail needs Google's security review first. When it is offered, Kairos will read the headers and the first words of recent inbox mail on your computer to find the few messages that ask something of you, will never send, delete or move mail, and will not store mail on Kairos's server. This page will say so before it applies.</p>
+      </section>
+
+      <section class="service" aria-labelledby="c-outlook">
+        <h3 id="c-outlook">Outlook and Microsoft 365</h3>
+        <p>One Microsoft account with five services. Each one turns on only when you turn it on, with its own approval at Microsoft.</p>
+        <dl>
+          <dt>Calendar</dt>
+          <dd>Your calendars and their events: subject, time, location, the first lines of the body and the online meeting link. <code>Calendars.ReadWrite</code> lets Kairos create, change and delete events on calendars you can edit, and add a Teams meeting to one, only when you ask.</dd>
+          <dt>Mail</dt>
+          <dd>The last 14 days of your inbox: sender, recipients, subject, the first lines Outlook gives and whether it was read. Kairos reads them on your computer to find the few that need you. When you ask Kairos about one, it reads that thread's text. <code>Mail.Read</code> cannot send, move or delete mail.</dd>
+          <dt>To Do</dt>
+          <dd>Your lists and tasks, kept the same as your Kairos tasks both ways with <code>Tasks.ReadWrite</code>. A task from To Do is stored with your other Kairos tasks on Kairos's server, with its id in To Do.</dd>
+          <dt>OneDrive</dt>
+          <dd>The names, sizes and folders of your recent files and the ones you search for, and the contents of a file only when you pick it. <code>Files.Read</code> cannot change or delete a file.</dd>
+          <dt>Teams chat</dt>
+          <dd>Your chats with the last message of each, on a work or school account, to find the ones waiting on your reply, and one chat's messages when you ask Kairos about it. <code>Chat.Read</code> cannot send a message or read a team's channels.</dd>
+          <dt>Access</dt>
+          <dd>Always <code>openid</code>, <code>email</code>, <code>offline_access</code> and <code>User.Read</code>, which is your name and email address. Then only the permissions of the services you turn on.</dd>
+          <dt>Kept</dt>
+          <dd>The refresh token in Credential Manager. Events, mail, chats and file lists in the app's cache on your computer, never on Kairos's server. Tasks from To Do, as above.</dd>
+          <dt>Ends</dt>
+          <dd>Turning a service off stops its reads. Disconnect deletes the token. <a href="support.html#outlook">Remove the approval at Microsoft</a> as well.</dd>
         </dl>
       </section>
 
@@ -229,11 +294,26 @@
         <h3 id="c-voice">Voice and reading aloud</h3>
         <dl>
           <dt>Voice</dt>
-          <dd>The microphone in Ask Kairos uses the Windows speech recognizer. Kairos sends no audio anywhere. If Windows' Online speech recognition setting is on, Windows processes your speech under the <a href="https://privacy.microsoft.com/privacystatement">Microsoft Privacy Statement</a>.</dd>
+          <dd>The microphone in Ask Kairos and the companion, which listens while you hold Ctrl Alt Space, use the Windows speech recognizer. Kairos sends no audio anywhere. The companion reads how loud the microphone is, on your computer, to draw its bars. If Windows' Online speech recognition setting is on, Windows processes your speech under the <a href="https://privacy.microsoft.com/privacystatement">Microsoft Privacy Statement</a>.</dd>
           <dt>Aloud</dt>
           <dd>Answers read aloud use the voices installed in Windows, on your computer.</dd>
         </dl>
       </section>
+
+      <h2 id="extension">The Kairos extension for Chrome and Edge</h2>
+      <p>The extension fills job applications from the career profile you keep in Kairos, under Professional, Profile. It runs only on application pages at Greenhouse, Lever, Ashby, Workday, iCIMS, SmartRecruiters and Oracle Taleo. Its permissions are storage, activeTab, scripting and those seven sites. It has no access to any other site.</p>
+      <dl>
+        <dt>Reads</dt>
+        <dd>On those sites, the labels and names of the form's fields, the job's title, company and location, and the page's address. On any other page, the same job details only when you open the extension there. It never reads what you type, your other tabs or your browsing history.</dd>
+        <dt>Sends</dt>
+        <dd>Nothing leaves the page except two things you ask for. Fill puts your profile's values into that page's form. Save to Kairos and Mark applied write one row to Applications in your Kairos account: the company, the role, the location, the page's address and the date. A draft you ask for sends the question, the company, the role and your saved answers to Claude through Kairos AI, as described below. Your name, email and phone are never in it.</dd>
+        <dt>Never</dt>
+        <dd>The extension never presses Submit and never fills a field before you press Fill. It answers a voluntary self identification question, such as gender, race, veteran status or disability, only with the answer you saved for it in Kairos, and otherwise leaves it empty. It never answers a question about a Social Security number, a birth date, pay or criminal history, and it never signs or agrees to anything for you. It sells nothing, shows no ads and sends nothing to an analytics service.</dd>
+        <dt>Kept</dt>
+        <dd>Your sign in lives in the browser's session storage for the extension, which empties when the browser closes. Your profile and resume stay in your Kairos account. Your resume is in a private store that only your account can read, as a PDF of 5 MB at most.</dd>
+        <dt>Ends</dt>
+        <dd>Sign out in the extension, or remove it from the browser. Delete account in Kairos deletes your profile, your resume and your applications.</dd>
+      </dl>
 
       <h2 id="claude">Claude and Anthropic</h2>
       <p>Kairos's assistant runs on Claude, made by Anthropic, in one of two ways:</p>
@@ -249,19 +329,20 @@
         <li>Canvas work due in the next 14 days, with its class and whether you submitted it.</li>
         <li>What Kairos remembers about you, the patterns it measured in your calendar and tasks and what it has learned about your schedule.</li>
         <li>For a planning question, the free time Kairos found in your calendar.</li>
-        <li>On the Kairos screen, more when a question needs it: other days of your calendar, tasks, search results from your events, tasks and notes, class work and, for a money question, money as described below.</li>
+        <li>On the Kairos screen, more when a question needs it: other days of your calendar, tasks, search results from your events, tasks and notes, class work, your applications and professional contacts with their touches and, for a money question, money as described below.</li>
       </ul>
       <p>Only in these cases, and only for that request:</p>
       <ul>
         <li><strong>Money</strong> goes only with a question about money: net worth, this month and last month, accounts and balances, recurring charges, charges worth a look and up to 150 transactions from the last 60 days.</li>
-        <li><strong>A picture of your screen</strong> goes only when you turn on Look at my screen or press Ctrl Alt S: one picture of the screen under your pointer, scaled down and sent with that question. It is never saved to disk.</li>
-        <li><strong>A syllabus</strong> goes when you import one: the PDF you pick, the course name and the term dates.</li>
+        <li><strong>A picture of your screen</strong> goes only with a question you ask about it: when you hold Ctrl Alt Space to ask the companion, turn on Look at my screen or press Ctrl Alt S. It is one picture of the screen under your pointer, scaled down and sent with that question. When Kairos points at something, a zoomed part of the same picture goes once more. It is never saved to disk, and the companion says when a picture goes. Turn off Read my screen when I ask in Settings, Companion, and Kairos takes no picture at all. On an application form Claude names only which field is next. Your saved value stays on your computer: Fill from my profile copies it, or hands it to the Kairos extension, which fills the field and never submits the form.</li>
+        <li><strong>A syllabus</strong> goes when you import one: the PDF you pick, from your computer or OneDrive, the course name and the term dates.</li>
+        <li><strong>Mail and Teams chats</strong> go only with a question about them: the few that need you, as sender, subject, why and when, and the text of one thread or chat when Kairos reads it to answer. Kairos never sends mail or messages.</li>
         <li><strong>The morning brief</strong>, if you turn on the brief by Claude: today's events, tasks due or overdue, what needs you and your focus hours.</li>
-        <li><strong>Files you attach</strong>: the images and PDFs you add to a message on the Kairos screen, with that message and the later ones in the same conversation.</li>
+        <li><strong>Files you attach</strong>: the images and PDFs you add to a message on the Kairos screen, from your computer or OneDrive, with that message and the later ones in the same conversation.</li>
         <li><strong>Web search and web pages</strong>: Claude may search the web and read a page through Anthropic to answer a question.</li>
         <li><strong>After a conversation</strong>, unless learning is off: what each side said, once more, so Claude can update what Kairos remembers about you. Files and tool results are not sent again.</li>
       </ul>
-      <p>Claude proposes changes. Nothing in Kairos changes until you apply them, and Claude can never change events that come from Google, Outlook or a feed.</p>
+      <p>Claude proposes changes to your events and tasks. Nothing there changes until you apply them, and Claude can never change events that come from Google, Outlook or a feed. In Professional, when you ask, Claude adds an application, moves one to a stage or logs a touch, and says so; each one shows in Professional, where you can change or delete it. Claude writes email drafts for you to send yourself. Kairos never sends mail.</p>
       <p>Anthropic handles these requests under its own terms with you. By Anthropic's published policy, it does not use inputs and outputs from its API to train its models by default, and it deletes them within 30 days, with the exceptions it lists. See <a href="https://privacy.claude.com/en/articles/7996868-is-my-data-used-for-model-training">Is my data used for model training?</a> and <a href="https://privacy.claude.com/en/articles/7996866-how-long-do-you-store-my-organization-s-data">How long do you store my organization's data?</a> Kairos does not send your data to any other AI provider. If that changes, this policy will name the provider first, and Settings, Kairos AI will show it.</p>
 
       <h2 id="google">Google user data</h2>
@@ -271,14 +352,14 @@
       </div>
       <p>In particular:</p>
       <ul>
-        <li><strong>What Kairos reads.</strong> With Google Calendar: your calendar list and events, as listed above. With Sign in with Google: your email address, name and profile picture.</li>
-        <li><strong>What Kairos changes.</strong> With Google Calendar: the events you create, change or delete in Kairos, on calendars you can edit, only when you ask. Nothing else.</li>
+        <li><strong>What Kairos reads.</strong> With Google Calendar: your calendar list and events, as listed above. With Google Tasks: your lists and tasks. With Google Drive: only the files you pick. With Google Classroom: your classes, work, grades and announcements. With Sign in with Google: your email address, name and profile picture.</li>
+        <li><strong>What Kairos changes.</strong> With Google Calendar: the events you create, change or delete in Kairos, on calendars you can edit, only when you ask. With Google Tasks: the tasks you add, change, finish or delete in Kairos, while Tasks is on. Nothing else.</li>
         <li><strong>How it is used.</strong> Only to show your calendars in the calendar, reminders, Today and Up next, and to make the changes you ask for. When you ask Kairos a question, also to answer it. Your sign-in details identify your Kairos account.</li>
-        <li><strong>Where it is kept.</strong> Calendar data stays on your computer, in the app's cache and in your conversations with Kairos, and is never stored on Kairos's server. Sign-in details are stored with your account on Kairos's server.</li>
-        <li><strong>Who it goes to.</strong> Calendar data goes to Anthropic only when you ask Kairos a question, as part of that request, through Kairos AI or your own key. Kairos AI passes it through Kairos's server without saving it. It goes to no one else.</li>
+        <li><strong>Where it is kept.</strong> Calendar, Drive and Classroom data stays on your computer, in the app's cache and in your conversations with Kairos, and is never stored on Kairos's server. Google tasks become Kairos tasks, stored with your account on Kairos's server. Sign-in details are stored with your account on Kairos's server.</li>
+        <li><strong>Who it goes to.</strong> Google data goes to Anthropic only when you ask Kairos a question, as part of that request, through Kairos AI or your own key. Kairos AI passes it through Kairos's server without saving it. It goes to no one else.</li>
         <li><strong>Never.</strong> Google user data is never sold, never used for advertising, never used to decide credit or lending, never given to data brokers and never used to create, train or improve any AI or machine learning model.</li>
         <li><strong>People.</strong> Nobody reads your Google data. The only exceptions: you ask us to in a support request, security needs it (for example, to investigate abuse) or the law requires it.</li>
-        <li><strong>Deleting it.</strong> Disconnect Google Calendar in Kairos to delete the token and revoke access, or remove Kairos at <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a>. Signing out removes the cached events.</li>
+        <li><strong>Deleting it.</strong> Disconnect Google in Kairos to delete the token and revoke access, or remove Kairos at <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a>. Signing out removes the cached events.</li>
       </ul>
 
       <h2 id="never">What we never do</h2>
@@ -298,6 +379,7 @@
         <li><strong>Supabase</strong> runs Kairos's server: your account, sign-in emails and the data listed under What Kairos's server stores.</li>
         <li><strong>Anthropic</strong> runs Claude, only when you ask: under Kairos's Anthropic account for Kairos AI, or under your own if you add your key.</li>
         <li><strong>Plaid</strong> and <strong>SimpleFIN Bridge</strong> connect your banks, if you use them.</li>
+        <li><strong>Tiingo</strong> provides stock and fund prices on Markets and a security's page. Kairos's server asks Tiingo for the ticker symbols you open, follow or hold, and nothing else: not your name, your account or how much you hold. The SEC, Nasdaq Trader and the US Treasury provide the list of securities, company filings and yields, which the server reads as public data.</li>
         <li><strong>Google</strong>, <strong>Microsoft</strong> and <strong>Instructure</strong> (Canvas, through your school) provide the data you connect and the sign-ins you choose.</li>
         <li><strong>GitHub</strong> hosts the installer, the updates Kairos checks for and this website. Like any web host, it sees your IP address when you download or Kairos checks for an update.</li>
       </ul>
@@ -309,6 +391,7 @@
         <li><strong>On your computer.</strong> Caches last until you sign out, disconnect the service or uninstall Kairos. Learned signals are dropped after 180 days. Conversations with Kairos last until you delete them, and only the newest 50 are kept.</li>
         <li><strong>On the server.</strong> Your account and what you make in Kairos are kept while your account exists. When you delete a task, event or note, Kairos marks it deleted and hides it everywhere. It is removed for good when your account is deleted. A memory you forget is deleted at once. Kairos AI usage records are kept while your account exists.</li>
         <li><strong>Plaid links.</strong> Kept until you remove the bank or your account is deleted.</li>
+        <li><strong>Watchlist.</strong> A symbol you remove is deleted at once. The list is deleted with your account.</li>
         <li><strong>At Anthropic.</strong> Under Anthropic's policy, linked above.</li>
       </ul>
       <p><strong>To delete your account,</strong> open Kairos, Settings, Account, Delete account. Kairos ends every bank link at Plaid, deletes your account with everything Kairos's server holds for it, disconnects your connections and clears what it keeps for you on that computer. You can also write to <a class="owner-fill" href="mailto:privacy@YOUR-DOMAIN">privacy@YOUR-DOMAIN</a> from the email address on the account, and we do the same within 30 days and write back when it is done. <a href="support.html#delete">Support</a> says how to clear another computer.</p>
@@ -347,11 +430,11 @@
         <img src="assets/brand/kairos-lockup.svg" alt="Kairos" width="81" height="24">
       </picture>
       <ul class="footer-nav">
-        <li><a href="https://github.com/KyrillosDawoud/kairos-releases/releases/latest">Download</a></li>
+        <li><a href="https://github.com/KyrillosDawoud7/kairos-releases/releases/latest">Download</a></li>
         <li><a href="privacy.html" aria-current="page">Privacy</a></li>
         <li><a href="terms.html">Terms</a></li>
         <li><a href="support.html">Support</a></li>
-        <li><a href="https://github.com/KyrillosDawoud/kairos-releases/releases">All releases</a></li>
+        <li><a href="https://github.com/KyrillosDawoud7/kairos-releases/releases">All releases</a></li>
       </ul>
       <p>Kairos is made by <span class="owner-fill">YOUR NAME OR COMPANY</span>. It is not affiliated with or endorsed by Google, Microsoft, Instructure, Plaid, SimpleFIN or Anthropic.</p>
       <p>&copy; 2026 Kyrillos Dawoud</p>
