@@ -51,8 +51,9 @@
         <ul>
           <li>Kairos reads only the services you connect, and reads them only to show them to you.</li>
           <li>Access to Google, Outlook, Canvas and SimpleFIN Bridge stays on your computer, in Windows Credential Manager.</li>
-          <li>Kairos's server keeps your account, the tasks, events and notes you make in Kairos and the links to banks you connect through Plaid.</li>
-          <li>Your data goes to Anthropic only when you ask Claude something, through your own Anthropic API key.</li>
+          <li>Kairos's server keeps your account, the tasks, events and notes you make in Kairos, what Kairos remembers about you and the links to banks you connect through Plaid.</li>
+          <li>Your data goes to Anthropic only when you ask Kairos something: through Kairos AI on Kairos's server, or through your own Anthropic API key if you add one.</li>
+          <li>Your conversations with Kairos stay on your computer.</li>
           <li>We do not sell your data, show ads or use your data to train AI models.</li>
           <li>You can disconnect any service at any time and ask us to delete your account.</li>
         </ul>
@@ -97,9 +98,11 @@
       <ul>
         <li>Your account, as described above.</li>
         <li>What you make in Kairos: your tasks, the events you create in Kairos, your notes, your Kairos calendars and the links between them.</li>
+        <li><strong>What Kairos remembers about you:</strong> short sentences you add in Settings, Memory, and the ones Kairos saves as you talk, such as a goal or a routine, so it knows you on every device. You can edit or forget each one.</li>
         <li>For each bank you connect through Plaid: the item id Plaid gives it, the bank's name, the access token Plaid issues for it and the last error code Plaid reported. Only Kairos's server function can read the access token. The app never receives it.</li>
+        <li>For each Kairos AI request, a usage record: which part of Kairos asked, the model, the number of tokens and the cost. Not the request and not the answer.</li>
       </ul>
-      <p>Each account's rows are protected by row level security, so only your signed-in account can read them. Events from Google Calendar, Outlook and calendar feeds, your Canvas data, your balances and transactions and your Anthropic key are not stored on the server. Balances and transactions from Plaid pass through the server on their way to your computer and are not saved there.</p>
+      <p>Each account's rows are protected by row level security, so only your signed-in account can read them. Events from Google Calendar, Outlook and calendar feeds, your Canvas data, your balances and transactions, your conversations with Kairos and your Anthropic key are not stored on the server. Balances and transactions from Plaid, and Kairos AI requests and answers, pass through the server and are not saved there.</p>
       <p>Like any web service, Supabase keeps request logs, including IP addresses, for a short time to run and protect the service.</p>
 
       <h2 id="computer">What stays on your computer</h2>
@@ -118,7 +121,8 @@
       <ul>
         <li><strong>Caches</strong> of your events, tasks, connected calendars, Canvas work and money, so Kairos opens fast and works offline. Money is read again at most every 6 hours unless you choose Refresh.</li>
         <li><strong>What Kairos learns</strong> from how you use it: when you finish tasks, which tasks move to a later day, how long study blocks run, which suggestions you act on and which proposals from Claude you apply. Kairos keeps at most 3,000 of these signals, none older than 180 days. They are never sent to Kairos's server.</li>
-        <li><strong>Memories</strong> you ask Ask Kairos to keep, money category corrections, your net worth history, class times and settings.</li>
+        <li><strong>Your conversations with Kairos</strong>, the newest 50, with the files you attached, so you can reopen one where it ended. You can delete any of them, or all of them, on the Kairos screen.</li>
+        <li>Money category corrections, your net worth history, class times and settings.</li>
       </ul>
       <p>Signing out removes the cached copy of your Kairos data from the computer. Connections stay until you disconnect them. Settings, What Kairos has learned lets you remove any learned item, forget everything or turn learning off.</p>
       <p>Reminders and the morning brief are made on your computer from these caches. They use Windows notifications, not a push service.</p>
@@ -229,15 +233,20 @@
       </section>
 
       <h2 id="claude">Claude and Anthropic</h2>
-      <p>Claude in Kairos is off until you add your own Anthropic API key in Settings. The key is kept in Credential Manager and sent only to Anthropic's Messages API. Each request goes from your computer straight to Anthropic, under your own Anthropic account. Kairos's server is not involved and never sees it.</p>
-      <p>When you ask Claude a question, Kairos sends:</p>
+      <p>Kairos's assistant runs on Claude, made by Anthropic, in one of two ways:</p>
+      <ul>
+        <li><strong>Kairos AI</strong>, when you are signed in. A request goes from your computer to Kairos's server, which checks your session and sends it to Anthropic under Kairos's own Anthropic account, then streams the answer back. The server keeps only the usage record described above. Each account can use up to $3 of Kairos AI a month.</li>
+        <li><strong>Your own key</strong>, if you add an Anthropic API key in Settings. It is kept in Credential Manager and sent only to Anthropic's Messages API. Each request goes from your computer straight to Anthropic, under your own Anthropic account, and Kairos's server is not involved.</li>
+      </ul>
+      <p>When you ask Kairos something, it sends:</p>
       <ul>
         <li>Your question and, in a conversation, the earlier questions and answers.</li>
         <li>Your events for the next 14 days: title, time, calendar name and location.</li>
         <li>Your open tasks with their due dates.</li>
         <li>Canvas work due in the next 14 days, with its class and whether you submitted it.</li>
-        <li>What Kairos has learned about your schedule and the memories you kept.</li>
+        <li>What Kairos remembers about you, the patterns it measured in your calendar and tasks and what it has learned about your schedule.</li>
         <li>For a planning question, the free time Kairos found in your calendar.</li>
+        <li>On the Kairos screen, more when a question needs it: other days of your calendar, tasks, search results from your events, tasks and notes, class work and, for a money question, money as described below.</li>
       </ul>
       <p>Only in these cases, and only for that request:</p>
       <ul>
@@ -245,10 +254,12 @@
         <li><strong>A picture of your screen</strong> goes only when you turn on Look at my screen or press Ctrl Alt S: one picture of the screen under your pointer, scaled down and sent with that question. It is never saved to disk.</li>
         <li><strong>A syllabus</strong> goes when you import one: the PDF you pick, the course name and the term dates.</li>
         <li><strong>The morning brief</strong>, if you turn on the brief by Claude: today's events, tasks due or overdue, what needs you and your focus hours.</li>
-        <li><strong>Web search</strong>, if you turn it on: Claude may search the web through Anthropic to answer a question.</li>
+        <li><strong>Files you attach</strong>: the images and PDFs you add to a message on the Kairos screen, with that message and the later ones in the same conversation.</li>
+        <li><strong>Web search and web pages</strong>: Claude may search the web and read a page through Anthropic to answer a question.</li>
+        <li><strong>After a conversation</strong>, unless learning is off: what each side said, once more, so Claude can update what Kairos remembers about you. Files and tool results are not sent again.</li>
       </ul>
       <p>Claude proposes changes. Nothing in Kairos changes until you apply them, and Claude can never change events that come from Google, Outlook or a feed.</p>
-      <p>Anthropic handles these requests under its own terms with you. By Anthropic's published policy, it does not use inputs and outputs from its API to train its models by default, and it deletes them within 30 days, with the exceptions it lists. See <a href="https://privacy.claude.com/en/articles/7996868-is-my-data-used-for-model-training">Is my data used for model training?</a> and <a href="https://privacy.claude.com/en/articles/7996866-how-long-do-you-store-my-organization-s-data">How long do you store my organization's data?</a> Kairos does not send your data to any other AI provider.</p>
+      <p>Anthropic handles these requests under its own terms with you. By Anthropic's published policy, it does not use inputs and outputs from its API to train its models by default, and it deletes them within 30 days, with the exceptions it lists. See <a href="https://privacy.claude.com/en/articles/7996868-is-my-data-used-for-model-training">Is my data used for model training?</a> and <a href="https://privacy.claude.com/en/articles/7996866-how-long-do-you-store-my-organization-s-data">How long do you store my organization's data?</a> Kairos does not send your data to any other AI provider. If that changes, this policy will name the provider first, and Settings, Kairos AI will show it.</p>
 
       <h2 id="google">Google user data</h2>
       <div class="statement">
@@ -258,9 +269,9 @@
       <p>In particular:</p>
       <ul>
         <li><strong>What Kairos reads.</strong> With Google Calendar: your calendar list and events, as listed above. With Sign in with Google: your email address, name and profile picture.</li>
-        <li><strong>How it is used.</strong> Only to show your calendars in the calendar, reminders, Today and Up next. When you ask Claude a question in Ask Kairos, also to answer it. Your sign-in details identify your Kairos account.</li>
-        <li><strong>Where it is kept.</strong> Calendar data stays on your computer, in the app's cache, and is never stored on Kairos's server. Sign-in details are stored with your account on Kairos's server.</li>
-        <li><strong>Who it goes to.</strong> Calendar data goes to Anthropic only when you ask Claude a question, as part of that request, through your own key. It goes to no one else.</li>
+        <li><strong>How it is used.</strong> Only to show your calendars in the calendar, reminders, Today and Up next. When you ask Kairos a question, also to answer it. Your sign-in details identify your Kairos account.</li>
+        <li><strong>Where it is kept.</strong> Calendar data stays on your computer, in the app's cache and in your conversations with Kairos, and is never stored on Kairos's server. Sign-in details are stored with your account on Kairos's server.</li>
+        <li><strong>Who it goes to.</strong> Calendar data goes to Anthropic only when you ask Kairos a question, as part of that request, through Kairos AI or your own key. Kairos AI passes it through Kairos's server without saving it. It goes to no one else.</li>
         <li><strong>Never.</strong> Google user data is never sold, never used for advertising, never used to decide credit or lending, never given to data brokers and never used to create, train or improve any AI or machine learning model.</li>
         <li><strong>People.</strong> Nobody reads your Google data. The only exceptions: you ask us to in a support request, security needs it (for example, to investigate abuse) or the law requires it.</li>
         <li><strong>Deleting it.</strong> Disconnect Google Calendar in Kairos to delete the token and revoke access, or remove Kairos at <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a>. Signing out removes the cached events.</li>
@@ -281,7 +292,7 @@
       <p>Kairos relies on these services. Each one receives only what its part needs.</p>
       <ul>
         <li><strong>Supabase</strong> runs Kairos's server: your account, sign-in emails and the data listed under What Kairos's server stores.</li>
-        <li><strong>Anthropic</strong> runs Claude, only when you ask and under your own Anthropic account.</li>
+        <li><strong>Anthropic</strong> runs Claude, only when you ask: under Kairos's Anthropic account for Kairos AI, or under your own if you add your key.</li>
         <li><strong>Plaid</strong> and <strong>SimpleFIN Bridge</strong> connect your banks, if you use them.</li>
         <li><strong>Google</strong>, <strong>Microsoft</strong> and <strong>Instructure</strong> (Canvas, through your school) provide the data you connect and the sign-ins you choose.</li>
         <li><strong>GitHub</strong> hosts the installer, the updates Kairos checks for and this website. Like any web host, it sees your IP address when you download or Kairos checks for an update.</li>
@@ -291,12 +302,12 @@
 
       <h2 id="retention">Keeping and deleting data</h2>
       <ul>
-        <li><strong>On your computer.</strong> Caches last until you sign out, disconnect the service or uninstall Kairos. Learned signals are dropped after 180 days.</li>
-        <li><strong>On the server.</strong> Your account and what you make in Kairos are kept while your account exists. When you delete a task, event or note, Kairos marks it deleted and hides it everywhere. It is removed for good when your account is deleted.</li>
+        <li><strong>On your computer.</strong> Caches last until you sign out, disconnect the service or uninstall Kairos. Learned signals are dropped after 180 days. Conversations with Kairos last until you delete them, and only the newest 50 are kept.</li>
+        <li><strong>On the server.</strong> Your account and what you make in Kairos are kept while your account exists. When you delete a task, event or note, Kairos marks it deleted and hides it everywhere. It is removed for good when your account is deleted. A memory you forget is deleted at once. Kairos AI usage records are kept while your account exists.</li>
         <li><strong>Plaid links.</strong> Kept until you remove the bank or your account is deleted.</li>
         <li><strong>At Anthropic.</strong> Under Anthropic's policy, linked above.</li>
       </ul>
-      <p><strong>To delete your account,</strong> write to <a class="owner-fill" href="mailto:privacy@YOUR-DOMAIN">privacy@YOUR-DOMAIN</a> from the email address on the account. Within 30 days we end every bank link at Plaid and delete your account with everything Kairos's server holds for it. We write back when it is done. <a href="support.html#delete">Support</a> says how to clear your computer too.</p>
+      <p><strong>To delete your account,</strong> open Kairos, Settings, Account, Delete account. Kairos ends every bank link at Plaid, deletes your account with everything Kairos's server holds for it, disconnects your connections and clears what it keeps for you on that computer. You can also write to <a class="owner-fill" href="mailto:privacy@YOUR-DOMAIN">privacy@YOUR-DOMAIN</a> from the email address on the account, and we do the same within 30 days and write back when it is done. <a href="support.html#delete">Support</a> says how to clear another computer.</p>
 
       <h2 id="security">Security</h2>
       <ul>

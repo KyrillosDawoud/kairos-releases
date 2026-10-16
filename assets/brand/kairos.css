@@ -13,6 +13,10 @@
   --kairos-career: #C2456F;
   --kairos-money: #2E9B76;
   --kairos-stone: #7C7889;
+  /* Calendar palette: three more hues so every calendar a person keeps reads as its own. */
+  --kairos-teal: #1F95A8;
+  --kairos-orange: #D9773A;
+  --kairos-plum: #9354C4;
   --kairos-orb: radial-gradient(circle at 38% 32%, #FFC9A0, #FF7A62 50%, #E5407F);
   --kairos-font-display: 'Instrument Serif', Georgia, serif;
   --kairos-font-text: 'Inter Tight', system-ui, sans-serif;
