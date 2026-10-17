@@ -6,32 +6,42 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Kairos: everything in one place</title>
-  <meta name="description" content="Kairos brings your calendars, classes, money and tasks into one Windows app, and it always knows what needs you now.">
+  <meta name="description" content="Kairos brings your calendars, classes, mail, applications, money and tasks into one app for students, and it always knows what needs you now.">
+  <meta property="og:title" content="Kairos: everything in one place">
+  <meta property="og:description" content="Your calendars, classes, money and tasks in one app. It always knows what needs you now.">
+  <meta property="og:type" content="website">
   <meta name="color-scheme" content="light dark">
   <meta name="theme-color" content="#F6F3EE" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#0D0C14" media="(prefers-color-scheme: dark)">
   <link rel="icon" href="favicon.ico" sizes="16x16 32x32 48x48 64x64">
   <link rel="icon" href="assets/brand/kairos-app-icon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png">
+  <link rel="preload" href="assets/fonts/InterTight-Variable.ttf" as="font" type="font/ttf" crossorigin>
   <link rel="stylesheet" href="assets/brand/kairos.css">
   <link rel="stylesheet" href="assets/site.css">
+  <script src="assets/boot.js"></script>
+  <script src="assets/site.js" defer></script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
 
   <header class="site-header">
-    <div class="wrap">
-      <a class="brand" href="index.html" aria-label="Kairos home">
+    <div class="nav-pill">
+      <a class="brand" href="./" aria-label="Kairos home">
         <picture>
           <source srcset="assets/brand/kairos-lockup-reversed.svg" media="(prefers-color-scheme: dark)">
-          <img src="assets/brand/kairos-lockup.svg" alt="Kairos" width="94" height="28">
+          <img src="assets/brand/kairos-lockup.svg" alt="Kairos" width="88" height="26">
         </picture>
       </a>
       <nav class="site-nav" aria-label="Main">
-        <a class="nav-text" href="privacy.html">Privacy</a>
-        <a class="nav-text" href="support.html">Support</a>
+        <a class="nav-text" href="#today">Home</a>
+        <a class="nav-text" href="#calendar">Calendar</a>
+        <a class="nav-text" href="#classes">Classes</a>
+        <a class="nav-text" href="#money">Money</a>
+        <a class="nav-text" href="#kairos">Kairos</a>
         <a class="button small" href="https://github.com/KyrillosDawoud7/kairos-releases/releases/latest">Download</a>
       </nav>
     </div>
@@ -39,200 +49,472 @@
 
   <main id="main">
     <section class="hero wrap" aria-labelledby="promise">
-      <p class="eyebrow">For Windows 10 and 11</p>
-      <h1 id="promise" class="display">Everything in one place, and it always knows what needs you now.</h1>
-      <p class="lede">Kairos brings your calendars, classes, mail, applications, money and tasks into one desktop app. Today shows what needs you now, each with one action.</p>
-      <div class="actions">
-        <a class="button" href="https://github.com/KyrillosDawoud7/kairos-releases/releases/latest">
+      <a class="beta-pill hero-in d0" href="#beta">
+        <span class="orb" aria-hidden="true"></span>
+        <span>For college students. Beta opens in November.</span>
+        <span class="arrow" aria-hidden="true">&rarr;</span>
+      </a>
+
+      <h1 id="promise" class="hero-title">
+        <span class="line"><span class="word"><span>Everything</span></span> <span class="word"><span>in</span></span> <span class="word"><span>one</span></span> <span class="word"><span>place.</span></span></span>
+        <span class="line soft"><span class="word"><span>It</span></span> <span class="word"><span>always</span></span> <span class="word"><span>knows</span></span> <span class="word"><span>what</span></span> <span class="word"><span>needs</span></span> <span class="word"><span>you</span></span> <span class="word"><span>now.</span></span></span>
+      </h1>
+
+      <p class="hero-lede hero-in d1">Kairos brings your calendars, classes, mail, applications, money and tasks into one app. Then it tells you, one line at a time, what needs you.</p>
+
+      <div class="live hero-in d2">
+        <span class="orb" aria-hidden="true"></span>
+        <span class="live-text">
+          <span class="is-on">Your 10:00 AM Macroeconomics starts in 30 minutes. Hall 204.</span>
+          <span>Problem set 3 was due yesterday at 5:00 PM.</span>
+          <span>Roots Natural Kitchen charged you twice, $24.49 each.</span>
+          <span>7:30 to 9:30 tomorrow is open. Your first class is at 10.</span>
+        </span>
+      </div>
+
+      <div class="actions hero-in d3">
+        <a class="button" data-magnetic href="https://github.com/KyrillosDawoud7/kairos-releases/releases/latest">
           <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 3v10M5.5 8.5 10 13l4.5-4.5M4 16.5h12"/></svg>
           Download for Windows
         </a>
-        <a class="button quiet" href="#your-data">How Kairos handles your data</a>
+        <a class="button quiet" href="#today">See it work</a>
       </div>
-      <p class="note">Free. Windows 10 and 11, 64-bit. It installs for your account only and needs no administrator rights. The installer is not code signed yet, so Windows may say it protected your PC: choose More info, then Run anyway. <a href="support.html#install">Installing Kairos</a></p>
-    </section>
+      <p class="note hero-in d4">Free for Windows 10 and 11, 64-bit. The web app is next, then iPhone. <a href="support.html#install">Installing Kairos</a></p>
 
-    <div class="wrap">
-      <figure class="shot">
-        <div class="frame">
+      <div class="stage hero-in d2">
+        <figure class="desk">
           <picture>
-            <source srcset="assets/screens/today-dark.webp" media="(prefers-color-scheme: dark)">
-            <img src="assets/screens/today-light.webp" width="1440" height="900" alt="Kairos Today: three things that need you and the tasks grouped by due date in one list, with the day's schedule in a panel on the right.">
+            <source srcset="assets/screens/desk-today-dark.webp" media="(prefers-color-scheme: dark)">
+            <img src="assets/screens/desk-today-light.webp" width="2160" height="1350" fetchpriority="high" alt="Kairos Today on Wednesday, October 14: three things that need you, the tasks by due date and the day as a timeline with Macroeconomics at 10.">
           </picture>
-        </div>
-        <figcaption>Today in Kairos. Every screen on this page shows demo data.</figcaption>
-      </figure>
-    </div>
+        </figure>
 
-    <section class="section wrap" aria-labelledby="what">
-      <div class="section-head">
-        <h2 id="what" class="display">What Kairos does</h2>
-        <p>One window for the day ahead. Kairos reads the places your life already lives and shows what is next.</p>
+        <div class="phone">
+          <div class="island" data-state="open" data-loop aria-hidden="true">
+            <div class="island-pill"><span class="orb"></span><span class="mins">30m</span></div>
+            <div class="island-open">
+              <span class="orb"></span>
+              <span><strong>Macroeconomics</strong><small>Hall 204, 10:00 to 11:15</small></span>
+              <span class="count">30<small>min</small></span>
+              <span class="island-bar"><span></span></span>
+            </div>
+          </div>
+          <div class="screen">
+            <picture>
+              <source srcset="assets/screens/phone-today-dark.webp" media="(prefers-color-scheme: dark)">
+              <img src="assets/screens/phone-today-light.webp" width="780" height="1688" alt="Kairos Today on an iPhone, with the tab bar at the bottom.">
+            </picture>
+          </div>
+        </div>
+
+        <p class="chip chip-a"><span class="orb" aria-hidden="true"></span><span>Problem set 3 was due yesterday at 5:00 PM.<small>Needs you</small></span></p>
+        <p class="chip chip-b"><i class="dot money" aria-hidden="true"></i><span>Charged twice at Roots Natural Kitchen.<small>$24.49 on Oct 10 and Oct 11</small></span></p>
+        <p class="chip chip-c"><i class="dot iris" aria-hidden="true"></i><span>7:30 to 9:30 tomorrow is open.<small>Kairos</small></span></p>
       </div>
-
-      <article class="feature">
-        <div class="feature-text">
-          <p class="eyebrow">Calendar</p>
-          <h3 class="display">Every calendar in one view.</h3>
-          <p>Day, week, month and agenda. Google Calendar works both ways: create, move or delete an event in Kairos and it changes there too. Outlook is coming soon. Any iCal link sits beside your own events, read only. Type "study Thursday 7 to 9" and Kairos puts it at the right time.</p>
-          <ul class="ticks">
-            <li>Drag to move, drag the edge to resize</li>
-            <li>A reminder before each event, 10 minutes by default</li>
-            <li>D, W, M and A switch the view</li>
-          </ul>
-        </div>
-        <figure class="shot">
-          <div class="frame">
-            <picture>
-              <source srcset="assets/screens/calendar-dark.webp" media="(prefers-color-scheme: dark)">
-              <img src="assets/screens/calendar-light.webp" width="1200" height="750" loading="lazy" alt="The Kairos week view with classes, an interview and study blocks, a small month and the list of calendars.">
-            </picture>
-          </div>
-        </figure>
-      </article>
-
-      <article class="feature">
-        <div class="feature-text">
-          <p class="eyebrow">Money</p>
-          <h3 class="display">Your money, read only.</h3>
-          <p>Connect banks and cards through Plaid or SimpleFIN Bridge. Kairos shows net worth, spending against last month by the same day, bills coming up and charges worth a look. Every category says why it is there. Markets follows the indexes and your watchlist, and Learn explains securities and accounts with your own numbers.</p>
-          <ul class="ticks">
-            <li>One correction moves every charge from that merchant</li>
-            <li>Totals are computed in exact cents</li>
-            <li>Kairos never moves money or makes a payment</li>
-          </ul>
-        </div>
-        <figure class="shot">
-          <div class="frame">
-            <picture>
-              <source srcset="assets/screens/money-dark.webp" media="(prefers-color-scheme: dark)">
-              <img src="assets/screens/money-light.webp" width="1200" height="750" loading="lazy" alt="Kairos Money: net worth with its line, cash flow, spending by category and accounts as tiles.">
-            </picture>
-          </div>
-        </figure>
-      </article>
-
-      <article class="feature">
-        <div class="feature-text">
-          <p class="eyebrow">Ask Kairos</p>
-          <h3 class="display">Ask in plain words.</h3>
-          <p>Ctrl K searches your events, tasks and notes, or makes a new one from one line. Kairos answers from your calendar, tasks, classes and money with Claude, remembers what matters to you and proposes changes. Nothing changes until you apply them.</p>
-          <ul class="ticks">
-            <li>Ctrl Alt K opens it from any app</li>
-            <li>Hold Ctrl Alt Space in any app to ask out loud: Kairos answers in a small bar and points at what it names</li>
-            <li>Speak instead of typing, through Windows speech recognition</li>
-            <li>Claude reads money only when you ask about money</li>
-          </ul>
-        </div>
-        <figure class="shot">
-          <div class="frame">
-            <picture>
-              <source srcset="assets/screens/ask-dark.webp" media="(prefers-color-scheme: dark)">
-              <img src="assets/screens/ask-light.webp" width="1200" height="750" loading="lazy" alt="Ask Kairos over Today, with the line 'study for macro Thursday 7 to 9' and the row Create event: Study for macro, Thu Oct 15, 7:00 to 9:00 PM.">
-            </picture>
-          </div>
-        </figure>
-      </article>
-
-      <article class="feature">
-        <div class="feature-text">
-          <p class="eyebrow">Connections</p>
-          <h3 class="display">Each connection asks first.</h3>
-          <p>Every service has a page that says what Kairos can do with it and what it never does, before you connect. Disconnect any time and Kairos removes the access from your computer.</p>
-          <ul class="ticks">
-            <li>Sign in at Google, Microsoft or your school, never in a Kairos form</li>
-            <li>Access stays in Windows Credential Manager</li>
-            <li>Read only, except the calendar events you change and the task lists kept in step</li>
-          </ul>
-        </div>
-        <figure class="shot">
-          <div class="frame">
-            <picture>
-              <source srcset="assets/screens/connections-dark.webp" media="(prefers-color-scheme: dark)">
-              <img src="assets/screens/connections-light.webp" width="1200" height="750" loading="lazy" alt="Kairos Connections with the Banks through Plaid sheet open, listing what Kairos can do and what it never does.">
-            </picture>
-          </div>
-        </figure>
-      </article>
+      <p class="stage-note">Every screen on this page shows demo data.</p>
     </section>
 
-    <section class="section wrap" aria-labelledby="connects">
-      <div class="section-head">
-        <h2 id="connects" class="display">What Kairos connects to</h2>
-        <p>Each one is optional. Kairos works with none of them.</p>
+    <section class="section wrap hue-iris" id="today" aria-labelledby="today-title">
+      <div class="split">
+        <div class="section-head" data-reveal>
+          <p class="eyebrow">Home</p>
+          <h2 id="today-title">Three things need you. <span class="soft">Each has one action.</span></h2>
+          <p>Kairos reads your calendar, classes, tasks and money, then puts up to 3 Moments at the top of Home. Do the thing and it leaves.</p>
+          <ul class="facts">
+            <li><strong>Up to 3 at a time,</strong> the closest first</li>
+            <li><strong>One action each:</strong> Mark done, Open or Join</li>
+            <li>The dot marks what needs you and nothing else</li>
+          </ul>
+        </div>
+
+        <div class="panel moments-panel" data-reveal>
+          <div class="panel-head">
+            <span class="orb" aria-hidden="true"></span>
+            <h3>Needs you</h3>
+            <span class="badge num" aria-live="polite">3</span>
+            <span class="panel-hint">Try it</span>
+          </div>
+          <ul class="moments">
+            <li class="moment">
+              <span class="orb" aria-hidden="true"></span>
+              <p>Read chapter 6 was due Monday.<span class="when">COMM 2010</span></p>
+              <button class="act" type="button">Mark done</button>
+            </li>
+            <li class="moment">
+              <span class="orb" aria-hidden="true"></span>
+              <p>Problem set 3 was due yesterday at 5:00 PM.<span class="when">ECON 3010</span></p>
+              <button class="act" type="button">Mark done</button>
+            </li>
+            <li class="moment">
+              <span class="orb" aria-hidden="true"></span>
+              <p>Your 10:00 AM Macroeconomics starts in 30 minutes.<span class="when">Hall 204</span></p>
+              <button class="act" type="button">Open</button>
+            </li>
+          </ul>
+          <div class="calm">
+            Nothing needs you right now. That is rare. Keep it.
+            <small>That is what Today says when you are clear.</small>
+            <button class="act" type="button">Show the 3 again</button>
+          </div>
+        </div>
       </div>
-      <ul class="grid">
-        <li class="card">
+    </section>
+
+    <section class="section wrap hue-cal" id="calendar" aria-labelledby="calendar-title">
+      <div class="split flip">
+        <div class="section-head" data-reveal>
+          <p class="eyebrow">Calendar</p>
+          <h2 id="calendar-title">Your whole week, <span class="soft">block by block.</span></h2>
+          <p>Day, week, month and agenda, with every calendar in its own color. Google Calendar works both ways: move an event in Kairos and it moves in Google.</p>
+          <ul class="facts">
+            <li><strong>Type one line.</strong> "study for macro Thursday 7 to 9" lands at 7 PM on Thursday.</li>
+            <li>Drag to move, drag the edge to resize, Undo for 8 seconds</li>
+            <li>Any iCal link sits beside it, read only. Outlook is coming soon</li>
+          </ul>
+        </div>
+
+        <div data-reveal>
+          <div class="week" role="img" aria-label="The week of October 12: Macroeconomics Monday and Wednesday at 10, ECON 3010 at 2, a J.P. Morgan first round Thursday at 10, Linear algebra Tuesday and Thursday at 1, a history seminar Wednesday at 3:30 and a lab Friday at 1.">
+            <span class="day" data-day="1">Mon 12</span>
+            <span class="day" data-day="2">Tue 13</span>
+            <span class="day today" data-day="3">Wed 14</span>
+            <span class="day" data-day="4">Thu 15</span>
+            <span class="day" data-day="5">Fri 16</span>
+
+            <span class="hour" data-at="0">8 AM</span>
+            <span class="hour" data-at="4">10</span>
+            <span class="hour" data-at="8">12 PM</span>
+            <span class="hour" data-at="12">2</span>
+            <span class="hour" data-at="16">4</span>
+            <span class="hour" data-at="20">6</span>
+            <span class="hour" data-at="24">8</span>
+            <span class="rule" data-at="0"></span>
+            <span class="rule" data-at="4"></span>
+            <span class="rule" data-at="8"></span>
+            <span class="rule" data-at="12"></span>
+            <span class="rule" data-at="16"></span>
+            <span class="rule" data-at="20"></span>
+            <span class="rule" data-at="24"></span>
+
+            <span class="block class" data-day="1" data-at="4" data-len="3"><b>Macroeconomics</b><span>Hall 204</span></span>
+            <span class="block teal" data-day="1" data-at="12" data-len="3"><b>ECON 3010</b><span>Monroe 130</span></span>
+            <span class="block plum" data-day="2" data-at="10" data-len="3"><b>Linear algebra</b></span>
+            <span class="block class" data-day="3" data-at="4" data-len="3"><b>Macroeconomics</b><span>Hall 204</span></span>
+            <span class="block" data-day="3" data-at="7" data-len="1"><b>Office hours</b></span>
+            <span class="block teal" data-day="3" data-at="12" data-len="3"><b>ECON 3010</b><span>Monroe 130</span></span>
+            <span class="block career" data-day="3" data-at="15" data-len="5"><b>HIST 4501</b><span>Nau 241</span></span>
+            <span class="block career" data-day="4" data-at="4" data-len="2"><b>J.P. Morgan</b><span>First round</span></span>
+            <span class="block plum" data-day="4" data-at="10" data-len="3"><b>Linear algebra</b></span>
+            <span class="block mine" data-day="5" data-at="10" data-len="2"><b>STAT 2120</b><span>Laboratory</span></span>
+            <span class="block new" data-day="4" data-at="22" data-len="4"><b>Study for macro</b><span>7 to 9 PM</span></span>
+            <span class="now" data-day="3" data-at="3" aria-hidden="true"></span>
+          </div>
+          <div class="quick" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M10 4v12M4 10h12"/></svg>
+            <span class="quick-text">study for macro Thursday 7 to 9</span>
+            <span class="quick-result">Thu Oct 15, 7:00 to 9:00 PM</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section wrap hue-teal" id="classes" aria-labelledby="classes-title">
+      <div class="split">
+        <div class="section-head" data-reveal>
+          <p class="eyebrow">Classes</p>
+          <h2 id="classes-title">Every class. <span class="soft">Every due date.</span></h2>
+          <p>Canvas brings your courses, assignments, grades, files and announcements. Kairos lays out the week by day and folds class times into your calendar.</p>
+          <ul class="facts">
+            <li><strong>Week 8 of 16:</strong> the term as a line that fills in</li>
+            <li>What is missing shows first, with the orb</li>
+            <li>Import a syllabus and its due dates land in your week</li>
+          </ul>
+        </div>
+
+        <div data-reveal>
+          <div class="term" data-seen>
+            <p class="term-head"><span>Week 8 of 16. <span class="num" data-count="54" data-duration="1400">54</span> days left.</span><span>49% through</span></p>
+            <div class="segments" aria-hidden="true">
+              <i class="done"></i><i class="done"></i><i class="done"></i><i class="done"></i><i class="done"></i><i class="done"></i><i class="done"></i><i class="done"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+            </div>
+            <div class="figures">
+              <p class="figure"><b class="num" data-count="6">6</b><span>due this week</span></p>
+              <p class="figure missing"><b class="num" data-count="1">1</b><span><span class="orb" aria-hidden="true"></span>missing</span></p>
+              <p class="figure"><b class="num" data-count="1">1</b><span>late this term</span></p>
+              <p class="figure"><b class="num" data-count="4">4</b><span>handed in this week</span></p>
+            </div>
+          </div>
+          <div class="class-cards" data-stagger>
+            <p class="class-card teal" data-reveal><small>2:00 to 3:15 PM</small><b>ECON 3010</b><span>Microeconomic Theory, Monroe Hall 130</span></p>
+            <p class="class-card orange" data-reveal><small>3:30 to 6:00 PM</small><b>HIST 4501</b><span>Major Seminar: Empires and Oceans, Nau Hall 241</span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section wrap hue-money" id="money" aria-labelledby="money-title">
+      <div class="split flip">
+        <div class="section-head" data-reveal>
+          <p class="eyebrow">Money</p>
+          <h2 id="money-title">Your money, <span class="soft">read only.</span></h2>
+          <p>Connect banks and cards through Plaid or SimpleFIN Bridge. Kairos shows net worth, spending against last month by the same day, bills coming up and charges worth a look.</p>
+          <ul class="facts">
+            <li><strong>Kairos never moves money</strong> or makes a payment</li>
+            <li>Totals computed in exact cents</li>
+            <li>One correction moves every charge from that merchant</li>
+          </ul>
+        </div>
+
+        <div class="panel" data-reveal>
+          <p class="worth-label">Net worth</p>
+          <p class="worth num"><span data-count="12578" data-prefix="$" data-duration="1800">$12,578</span><span class="cents">.74</span></p>
+          <p class="worth-sub">$17,171.51 in assets, $4,592.77 owed</p>
+          <svg class="chart" viewBox="0 0 660 210" role="img" aria-label="Net worth over 30 days, from about $14,000 down to $12,578.74.">
+            <defs>
+              <linearGradient id="money-fill" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#2E9B76" stop-opacity="0.22"/>
+                <stop offset="1" stop-color="#2E9B76" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <path class="area" d="M0 62 L40 64 L80 71 L110 73 L140 79 L190 80 L225 81 L258 62 L300 62 L345 67 L380 70 L410 152 L445 152 L480 153 L515 159 L545 160 L565 139 L585 147 L615 151 L645 166 L660 183 L660 210 L0 210 Z"/>
+            <path class="line" pathLength="1" d="M0 62 L40 64 L80 71 L110 73 L140 79 L190 80 L225 81 L258 62 L300 62 L345 67 L380 70 L410 152 L445 152 L480 153 L515 159 L545 160 L565 139 L585 147 L615 151 L645 166 L660 183"/>
+            <circle class="halo" cx="660" cy="183" r="12"/>
+            <circle class="dot" cx="660" cy="183" r="5"/>
+          </svg>
+          <ul class="looks" data-stagger>
+            <li data-reveal><span class="orb" aria-hidden="true"></span><p><b>Best Buy, $289.43</b><span>First charge from this merchant. Yesterday.</span></p></li>
+            <li data-reveal><span class="orb" aria-hidden="true"></span><p><b>Roots Natural Kitchen, $24.49</b><span>Charged on Oct 10 and again on Oct 11.</span></p></li>
+            <li data-reveal><span class="orb" aria-hidden="true"></span><p><b>Paramount+, $13.99</b><span>First charge from a subscription. A free trial may have ended.</span></p></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section wrap hue-iris" id="kairos" aria-labelledby="kairos-title">
+      <div class="split">
+        <div class="section-head" data-reveal>
+          <p class="eyebrow">Kairos, the assistant</p>
+          <h2 id="kairos-title">Ask in plain words. <span class="soft">Nothing changes until you apply it.</span></h2>
+          <p>Kairos answers from your week, classes and money with Claude, remembers what matters to you and proposes changes you apply one by one.</p>
+          <ul class="facts">
+            <li><strong>$3 of Claude a month</strong> comes with every account, or use your own Anthropic key</li>
+            <li>Ctrl K inside Kairos, Ctrl Alt K from any app</li>
+            <li>Claude reads your money only when you ask about money</li>
+          </ul>
+        </div>
+
+        <div class="panel chat" data-reveal>
+          <p class="bubble">Plan my week around what is due</p>
+          <p class="thought">Thought for 1 second</p>
+          <p class="answer"><b>7:30 to 9:30 tomorrow is open.</b> Your first class starts at 10 AM. I propose a Deep work block there to get ahead of Problem set 4, due Friday at 5:00 PM.</p>
+          <div class="proposal">
+            <span class="orb" aria-hidden="true"></span>
+            <span>Add event: Deep work, Thu Oct 15, 7:30 to 9:30 AM</span>
+            <span class="acts">
+              <button class="act" type="button">Skip</button>
+              <button class="act primary" type="button">Apply</button>
+            </span>
+            <span class="applied" role="status">
+              <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4.5 10.5 3.5 3.5 7.5-8"/></svg>
+              <span>Added to Thursday</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section wrap" id="screens" aria-labelledby="screens-title">
+      <div class="section-head center" data-reveal>
+        <p class="eyebrow">The app</p>
+        <h2 id="screens-title">Every screen, <span class="soft">one demo week.</span></h2>
+      </div>
+      <div class="showcase" data-reveal>
+        <div class="tabs" role="tablist" aria-label="Screens">
+          <button type="button" role="tab" id="tab-today" aria-controls="pane-today" aria-selected="true">Home</button>
+          <button type="button" role="tab" id="tab-calendar" aria-controls="pane-calendar" aria-selected="false" tabindex="-1">Calendar</button>
+          <button type="button" role="tab" id="tab-classes" aria-controls="pane-classes" aria-selected="false" tabindex="-1">Classes</button>
+          <button type="button" role="tab" id="tab-money" aria-controls="pane-money" aria-selected="false" tabindex="-1">Money</button>
+          <button type="button" role="tab" id="tab-kairos" aria-controls="pane-kairos" aria-selected="false" tabindex="-1">Kairos</button>
+        </div>
+        <div class="desk panes">
+          <div class="pane is-on" role="tabpanel" id="pane-today" aria-labelledby="tab-today">
+            <picture>
+              <source srcset="assets/screens/desk-today-dark.webp" media="(prefers-color-scheme: dark)">
+              <img src="assets/screens/desk-today-light.webp" width="2160" height="1350" loading="lazy" alt="Today: three things that need you, the tasks by due date and the day as a timeline.">
+            </picture>
+          </div>
+          <div class="pane" role="tabpanel" id="pane-calendar" aria-labelledby="tab-calendar">
+            <picture>
+              <source srcset="assets/screens/desk-calendar-dark.webp" media="(prefers-color-scheme: dark)">
+              <img src="assets/screens/desk-calendar-light.webp" width="2160" height="1350" loading="lazy" alt="The week view with classes, an interview and study blocks, each calendar in its own color.">
+            </picture>
+          </div>
+          <div class="pane" role="tabpanel" id="pane-classes" aria-labelledby="tab-classes">
+            <picture>
+              <source srcset="assets/screens/desk-education-dark.webp" media="(prefers-color-scheme: dark)">
+              <img src="assets/screens/desk-education-light.webp" width="2160" height="1350" loading="lazy" alt="Education: week 8 of 16, what is due this week, today's classes and each course with its grade.">
+            </picture>
+          </div>
+          <div class="pane" role="tabpanel" id="pane-money" aria-labelledby="tab-money">
+            <picture>
+              <source srcset="assets/screens/desk-money-dark.webp" media="(prefers-color-scheme: dark)">
+              <img src="assets/screens/desk-money-light.webp" width="2160" height="1350" loading="lazy" alt="Money: net worth over 30 days, cash flow for October, charges worth a look and the accounts.">
+            </picture>
+          </div>
+          <div class="pane" role="tabpanel" id="pane-kairos" aria-labelledby="tab-kairos">
+            <picture>
+              <source srcset="assets/screens/desk-kairos-dark.webp" media="(prefers-color-scheme: dark)">
+              <img src="assets/screens/desk-kairos-light.webp" width="2160" height="1350" loading="lazy" alt="Kairos answering Plan my week around what is due, with a Deep work block to apply.">
+            </picture>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section wrap" id="phone" aria-labelledby="phone-title">
+      <div class="section-head center" data-reveal>
+        <p class="eyebrow">Phone</p>
+        <h2 id="phone-title">On your phone next.</h2>
+        <p>The same Kairos, laid out for a thumb: a tab bar, sheets that rise from the bottom and the screen's name at the top once you scroll.</p>
+      </div>
+      <div class="phones">
+        <div class="phone">
+          <div class="island" data-state="open" data-loop aria-hidden="true">
+            <div class="island-pill"><span class="orb"></span><span class="mins">30m</span></div>
+            <div class="island-open">
+              <span class="orb"></span>
+              <span><strong>Macroeconomics</strong><small>Hall 204, 10:00 to 11:15</small></span>
+              <span class="count">30<small>min</small></span>
+              <span class="island-bar"><span></span></span>
+            </div>
+          </div>
+          <div class="screen">
+            <picture>
+              <source srcset="assets/screens/phone-calendar-dark.webp" media="(prefers-color-scheme: dark)">
+              <img src="assets/screens/phone-calendar-light.webp" width="780" height="1688" loading="lazy" alt="The Kairos calendar on an iPhone, three days across.">
+            </picture>
+          </div>
+        </div>
+        <div class="phone">
+          <div class="island" data-state="idle" aria-hidden="true">
+            <div class="island-pill"></div>
+          </div>
+          <div class="screen">
+            <picture>
+              <source srcset="assets/screens/phone-money-dark.webp" media="(prefers-color-scheme: dark)">
+              <img src="assets/screens/phone-money-light.webp" width="780" height="1688" loading="lazy" alt="Kairos Money on an iPhone: net worth and its line over 30 days.">
+            </picture>
+          </div>
+        </div>
+      </div>
+      <ul class="platforms" data-stagger>
+        <li data-reveal><span class="now">Now</span><b>Windows</b><span>Windows 10 and 11. It updates itself.</span></li>
+        <li data-reveal><span class="next">Next</span><b>The web app</b><span>Any browser. Add it to your iPhone home screen.</span></li>
+        <li data-reveal><span class="next">After launch</span><b>iPhone</b><span>Planned: your next class on the Lock Screen and in the Dynamic Island.</span></li>
+      </ul>
+    </section>
+
+    <section class="section wrap connects" id="connects" aria-labelledby="connects-title">
+      <div class="section-head center" data-reveal>
+        <p class="eyebrow">Connections</p>
+        <h2 id="connects-title">Connect what you use. <span class="soft">Or nothing at all.</span></h2>
+        <p>Each connection is optional and asks first. Every one has a page that says what Kairos can do with it and what it never does.</p>
+      </div>
+      <div class="marquee" data-reveal>
+        <ul class="marquee-row">
+          <li><i class="h-cal"></i>Google Calendar</li><li><i class="h-iris"></i>Google Tasks</li><li><i class="h-teal"></i>Google Classroom</li><li><i class="h-cal"></i>Google Drive</li><li><i class="h-teal"></i>Moodle</li><li><i class="h-teal"></i>Ed Discussion</li><li><i class="h-teal"></i>Canvas</li><li><i class="h-money"></i>Plaid</li><li><i class="h-money"></i>SimpleFIN Bridge</li><li><i class="h-plum"></i>iCal feeds</li><li><i class="h-iris"></i>Claude</li>
+          <li class="dup" aria-hidden="true"><i class="h-cal"></i>Google Calendar</li><li class="dup" aria-hidden="true"><i class="h-iris"></i>Google Tasks</li><li class="dup" aria-hidden="true"><i class="h-teal"></i>Google Classroom</li><li class="dup" aria-hidden="true"><i class="h-cal"></i>Google Drive</li><li class="dup" aria-hidden="true"><i class="h-teal"></i>Moodle</li><li class="dup" aria-hidden="true"><i class="h-teal"></i>Ed Discussion</li><li class="dup" aria-hidden="true"><i class="h-teal"></i>Canvas</li><li class="dup" aria-hidden="true"><i class="h-money"></i>Plaid</li><li class="dup" aria-hidden="true"><i class="h-money"></i>SimpleFIN Bridge</li><li class="dup" aria-hidden="true"><i class="h-plum"></i>iCal feeds</li><li class="dup" aria-hidden="true"><i class="h-iris"></i>Claude</li>
+        </ul>
+        <ul class="marquee-row back" aria-hidden="true">
+          <li><i class="h-iris"></i>Read only banks</li><li><i class="h-cal"></i>Two way Google Calendar</li><li><i class="h-teal"></i>Grades and files</li><li><i class="h-career"></i>Applications and contacts</li><li><i class="h-money"></i>Exact cents</li><li><i class="h-iris"></i>Proposals you apply</li><li><i class="h-plum"></i>Light and dark</li><li><i class="h-cal"></i>Undo for 8 seconds</li>
+          <li><i class="h-iris"></i>Read only banks</li><li><i class="h-cal"></i>Two way Google Calendar</li><li><i class="h-teal"></i>Grades and files</li><li><i class="h-career"></i>Applications and contacts</li><li><i class="h-money"></i>Exact cents</li><li><i class="h-iris"></i>Proposals you apply</li><li><i class="h-plum"></i>Light and dark</li><li><i class="h-cal"></i>Undo for 8 seconds</li>
+        </ul>
+      </div>
+      <ul class="grid" data-stagger>
+        <li class="card" data-reveal>
           <h3>Google Calendar</h3>
           <p class="maker">Google</p>
           <p>The calendars you show in Google Calendar. Events you change in Kairos change there too.</p>
         </li>
-        <li class="card">
+        <li class="card" data-reveal>
           <h3>Google Tasks, Drive and Classroom</h3>
           <p class="maker">Google</p>
           <p>Tasks kept in step both ways. Only the Drive files you pick. Classroom beside Canvas, read only.</p>
         </li>
-        <li class="card">
+        <li class="card" data-reveal>
           <h3>Outlook, To Do, OneDrive and Teams <span class="soon">Coming soon</span></h3>
           <p class="maker">Microsoft</p>
           <p>Your Outlook calendar both ways, the mail that needs you, To Do, OneDrive and Teams chats.</p>
         </li>
-        <li class="card">
+        <li class="card" data-reveal>
           <h3>Canvas</h3>
           <p class="maker">Instructure</p>
           <p>Courses, assignments, grades and files from your school's Canvas.</p>
         </li>
-        <li class="card">
+        <li class="card" data-reveal>
           <h3>Banks through Plaid</h3>
           <p class="maker">Plaid</p>
           <p>Accounts and transactions from your banks and cards, read only.</p>
         </li>
-        <li class="card">
+        <li class="card" data-reveal>
           <h3>Banks through SimpleFIN</h3>
           <p class="maker">SimpleFIN Bridge</p>
           <p>The same, through a SimpleFIN Bridge account you pay for yourself.</p>
         </li>
-        <li class="card">
+        <li class="card" data-reveal>
           <h3>Calendar feed</h3>
           <p class="maker">Any iCal link</p>
           <p>Any other calendar that publishes an iCal address.</p>
         </li>
-        <li class="card">
+        <li class="card" data-reveal>
           <h3>Claude</h3>
           <p class="maker">Anthropic</p>
-          <p>Answers and plans through Kairos AI, or with your own API key.</p>
+          <p>Answers and plans in Kairos, through Kairos AI or your own API key.</p>
         </li>
       </ul>
       <p class="after-grid">Also Moodle and Ed Discussion. Coming soon: GitHub, Notion, Gmail, Todoist, Spotify, Splitwise, Strava, Zoom and the weather beyond UVA.</p>
     </section>
 
     <section class="section wrap" id="your-data" aria-labelledby="data-title">
-      <div class="section-head">
-        <h2 id="data-title" class="display">Your data</h2>
-        <p>Kairos keeps as little as it can, as close to you as it can.</p>
+      <div class="section-head" data-reveal>
+        <p class="eyebrow">Your data</p>
+        <h2 id="data-title">As little as it can, <span class="soft">as close to you as it can.</span></h2>
       </div>
-      <ul class="grid two">
-        <li class="card">
+      <ul class="grid two" data-stagger>
+        <li class="card" data-reveal>
           <h3>Sign-ins stay on your computer.</h3>
           <p>Access to Google, Canvas and SimpleFIN Bridge is kept in Windows Credential Manager on your PC. Kairos's server never holds it.</p>
         </li>
-        <li class="card">
+        <li class="card" data-reveal>
           <h3>The server keeps what you make.</h3>
           <p>Your account, tasks, events, notes, the applications and contacts you track and what Kairos remembers about you sync through Kairos's server, readable only by your account. So does the link to each bank you connect through Plaid. Your conversations with Kairos stay on your computer.</p>
         </li>
-        <li class="card">
+        <li class="card" data-reveal>
           <h3>Claude reads only when you ask.</h3>
           <p>Your data goes to Anthropic only when you ask Kairos something, through Kairos AI or your own key. A picture of your screen goes only with a question you ask about it, one picture for that question, and never once you turn screen reading off.</p>
         </li>
-        <li class="card">
+        <li class="card" data-reveal>
           <h3>Nothing sold. No ads.</h3>
           <p>Kairos does not sell your data, show ads or use your data to train AI models. The app and this site have no analytics or trackers.</p>
         </li>
       </ul>
-      <div class="actions">
+      <div class="actions" data-reveal>
         <a class="button quiet" href="privacy.html">Read the privacy policy</a>
         <a href="support.html#delete">Disconnect a service or delete your account</a>
       </div>
+    </section>
+
+    <section class="section wrap close" id="beta" aria-labelledby="close-title">
+      <img class="big-mark" src="assets/brand/kairos-app-icon.svg" width="132" height="132" alt="" aria-hidden="true">
+      <h2 id="close-title" data-reveal>Know what needs you now.</h2>
+      <div class="actions" data-reveal>
+        <a class="button" data-magnetic href="https://github.com/KyrillosDawoud7/kairos-releases/releases/latest">
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 3v10M5.5 8.5 10 13l4.5-4.5M4 16.5h12"/></svg>
+          Download for Windows
+        </a>
+      </div>
+      <p class="note" data-reveal>Free. Windows 10 and 11, 64-bit, for your account only, with no administrator rights. The installer is not code signed yet, so Windows may say it protected your PC: choose More info, then Run anyway.</p>
+      <p class="note" data-reveal>A beta for 10 to 25 students opens in November. To join, write to us from <a href="support.html#contact">Support</a>.</p>
     </section>
   </main>
 
